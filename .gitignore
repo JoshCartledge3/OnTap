@@ -11,3 +11,8 @@
 # .NET build output
 **/bin/
 **/obj/
+
+# Local environment files
+.env
+.env.*
+!.env.example
