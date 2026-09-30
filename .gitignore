@@ -1,0 +1,13 @@
+# Local IDE settings
+.idea/
+.vs/
+*.sln.iml
+*.user
+*.suo
+
+# macOS
+.DS_Store
+
+# .NET build output
+**/bin/
+**/obj/
