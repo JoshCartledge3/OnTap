@@ -6,7 +6,12 @@ using OnTap.Api.Services.Abstraction;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddOpenApi(options =>
+{
+    options.OpenApiVersion =
+        Microsoft.OpenApi.OpenApiSpecVersion.OpenApi3_0;
+});
+
 builder.Services.AddScoped<IPubService, PubService>();
 
 builder.Services.AddDbContext<OnTapDbContext>(options =>

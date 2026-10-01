@@ -13,7 +13,7 @@ WORKDIR "/src/OnTap.Api"
 
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./OnTap.Api.csproj" --no-restore -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./OnTap.Api.csproj" --no-restore -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false /p:SkipNswagGeneration=true
 
 FROM base AS final
 WORKDIR /app

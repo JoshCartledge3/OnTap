@@ -6,10 +6,18 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <UserSecretsId>a842a919-6570-4922-ad62-cbc9a49f3f53</UserSecretsId>
+        <OpenApiDocumentsDirectory>$(MSBuildProjectDirectory)/obj/$(Configuration)/openapi</OpenApiDocumentsDirectory>
+        <OpenApiGenerateDocumentsOptions>--file-name openapi --document-name v1 --openapi-version OpenApi3_0</OpenApiGenerateDocumentsOptions>
+        <OpenApiGenerateDocumentsOnBuild Condition="'$(DesignTimeBuild)' == 'true' Or '$(DotNetWatchBuild)' == 'true' Or '$(SkipNswagGeneration)' == 'true'">false</OpenApiGenerateDocumentsOnBuild>
     </PropertyGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.7" />
+        <PackageReference Include="Microsoft.Extensions.ApiDescription.Server" Version="10.0.7" PrivateAssets="all" />
+        <PackageReference Include="NSwag.MSBuild" Version="14.7.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
         <PackageReference Include="Microsoft.OpenApi" Version="2.7.5" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,5 +27,11 @@
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite" Version="10.0.3" />
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
     </ItemGroup>
+
+    <Target Name="NSwag" AfterTargets="Build" DependsOnTargets="GenerateOpenApiDocuments"
+            Condition="'$(DesignTimeBuild)' != 'true' And '$(DotNetWatchBuild)' != 'true' And '$(SkipNswagGeneration)' != 'true'">
+        <Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Nswag"
+              Command="$(NSwagExe_Net100) run nswag.json /variables:Configuration=$(Configuration)" />
+    </Target>
 
 </Project>

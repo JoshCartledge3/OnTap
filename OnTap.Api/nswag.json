@@ -1,0 +1,21 @@
+{
+  "runtime": "Net100",
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "obj/$(Configuration)/openapi/openapi.json"
+    }
+  },
+  "codeGenerators": {
+    "openApiToTypeScriptClient": {
+      "className": "OnTapClient",
+      "template": "Fetch",
+      "typeStyle": "Interface",
+      "dateTimeType": "String",
+      "nullValue": "Null",
+      "operationGenerationMode": "SingleClientFromOperationId",
+      "generateOptionalParameters": true,
+      "useAbortSignal": true,
+      "output": "../OnTap.Client/src/api/generated/client.ts"
+    }
+  }
+}

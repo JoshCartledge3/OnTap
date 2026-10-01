@@ -8,7 +8,7 @@ namespace OnTap.Api.Controllers;
 [Route("api/pubs")]
 public class PubController(IPubService pubService) : ControllerBase
 {
-    [HttpGet]
+    [HttpGet(Name = "GetPubs")]
     [ProducesResponseType(typeof(IEnumerable<PubDto>), StatusCodes.Status200OK)]
     public async Task<ActionResult<IEnumerable<PubDto>>> GetPubs(CancellationToken ct)
     {
