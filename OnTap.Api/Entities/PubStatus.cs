@@ -1,4 +1,4 @@
-namespace OnTap.Api.Models;
+namespace OnTap.Api.Entities;
 
 public enum PubStatus
 {

@@ -1,12 +1,12 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using OnTap.Api.Models;
+using OnTap.Api.Entities;
 
 namespace OnTap.Api.Data.Configurations;
 
-public class PubConfiguration : IEntityTypeConfiguration<Pub>
+public class PubConfiguration : IEntityTypeConfiguration<PubEntity>
 {
-    public void Configure(EntityTypeBuilder<Pub> builder)
+    public void Configure(EntityTypeBuilder<PubEntity> builder)
     {
         builder.ToTable("Pubs");
         builder.HasKey(pub => pub.Id);

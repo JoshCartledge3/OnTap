@@ -1,0 +1,18 @@
+using Microsoft.AspNetCore.Mvc;
+using OnTap.Api.Contracts;
+using OnTap.Api.Services.Abstraction;
+
+namespace OnTap.Api.Controllers;
+
+[ApiController]
+[Route("api/pubs")]
+public class PubController(IPubService pubService) : ControllerBase
+{
+    [HttpGet]
+    [ProducesResponseType(typeof(IEnumerable<PubDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<PubDto>>> GetPubs(CancellationToken ct)
+    {
+        var pubs = await pubService.GetPubsAsync(ct);
+        return Ok(pubs);
+    }
+}
