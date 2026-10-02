@@ -17,6 +17,9 @@ module.exports = defineConfig([
                 patterns: [{
                     group: ['**/contexts/**', '**/context/**', '**/*Context', '**/*Context.*'],
                     message: 'Context files may only be imported by concern hooks in src/hooks/.',
+                }, {
+                    group: ['**/services/**', '**/*Service', '**/*Service.*'],
+                    message: 'Service files may only be imported by concern hooks in src/hooks/.',
                 }],
             }],
         },

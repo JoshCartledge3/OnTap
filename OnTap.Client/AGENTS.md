@@ -50,9 +50,10 @@ Component / screen -> Concern hook -> Concern service -> Generated API client
 - Confirm the context contains only minimal state/provider wiring, with reusable logic in the service and React-specific coordination in the hook.
 - Do not introduce extra concern hooks, service subdivisions, or context logic to work around these rules.
 
-### Enforced context boundary
+### Enforced service and context boundaries
 
 - Place context modules in `src/contexts/` and name them `<Concern>Context.ts(x)`. Place public concern hooks in `src/hooks/use<Concern>.ts(x)`.
+- Place services in `src/services/` and name them `<Concern>Service.ts`. ESLint rejects static service imports/re-exports outside the concern hook files. Components, contexts, utilities, and other services must not import services.
 - ESLint's `no-restricted-imports` rule in `eslint.config.js` rejects static context imports/re-exports and named React `useContext` imports outside those hook files. Use static ES imports for client dependencies; do not use dynamic imports, CommonJS, or namespace access to bypass this boundary.
 - Keep context implementation self-contained. Do not create barrel exports or alternative filenames to bypass the rule.
 - Run `npm run lint` when changing the architecture rule.
