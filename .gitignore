@@ -16,3 +16,6 @@
 .env
 .env.*
 !.env.example
+
+# Keep client architecture guidance in version control
+!OnTap.Client/AGENTS.md
