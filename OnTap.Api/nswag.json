@@ -7,12 +7,12 @@
   },
   "codeGenerators": {
     "openApiToTypeScriptClient": {
-      "className": "OnTapClient",
+      "className": "{controller}Client",
       "template": "Fetch",
       "typeStyle": "Interface",
       "dateTimeType": "String",
       "nullValue": "Null",
-      "operationGenerationMode": "SingleClientFromOperationId",
+      "operationGenerationMode": "MultipleClientsFromFirstTagAndOperationId",
       "generateOptionalParameters": true,
       "useAbortSignal": true,
       "output": "../OnTap.Client/src/api/generated/client.ts"

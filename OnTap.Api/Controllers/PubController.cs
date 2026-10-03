@@ -6,6 +6,7 @@ namespace OnTap.Api.Controllers;
 
 [ApiController]
 [Route("api/pubs")]
+[Tags("Pubs")]
 public class PubController(IPubService pubService) : ControllerBase
 {
     [HttpGet(Name = "GetPubs")]
