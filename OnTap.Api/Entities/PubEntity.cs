@@ -1,8 +1,8 @@
 using NetTopologySuite.Geometries;
 
-namespace OnTap.Api.Models;
+namespace OnTap.Api.Entities;
 
-public class Pub
+public class PubEntity
 {
     public Guid Id { get; set; } = Guid.NewGuid();
     public required string Name { get; set; }

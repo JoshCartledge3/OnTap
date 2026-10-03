@@ -1,11 +1,11 @@
 using Microsoft.EntityFrameworkCore;
-using OnTap.Api.Models;
+using OnTap.Api.Entities;
 
 namespace OnTap.Api.Data;
 
 public class OnTapDbContext(DbContextOptions<OnTapDbContext> options) : DbContext(options)
 {
-    public DbSet<Pub> Pubs => Set<Pub>();
+    public DbSet<PubEntity> Pubs => Set<PubEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
