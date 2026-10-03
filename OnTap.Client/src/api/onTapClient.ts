@@ -4,6 +4,6 @@ import { developmentSettings } from '../settings/development';
 export const onTapClient = {
     pubsClient: new PubsClient(
         developmentSettings.apiBaseUrl,
-        { fetch }
+        { fetch: globalThis.fetch.bind(globalThis) }
     ),
 };

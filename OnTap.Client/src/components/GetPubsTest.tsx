@@ -20,21 +20,14 @@ export default function GetPubsTest() {
             {pubs.map(pub => (
                 <Text key={pub.id}>
                     {pub.name}
-                    <br/>
-                    <span>
+                    {' \n'}
                         {pub.address}, {pub.postcode}
-                    </span>
-                    <br/>
-                    <span>
+                    {' \n'}
                         {pub.latitude}, {pub.longitude}
-                    </span>
-                    <br/>
-                    <span>
+                    {' \n'}
                         Created at: {pub.createdAt}
-                    </span>
-                    <br/>
+                    {' \n'}
                     {pub.status}
-                    <br/>
                 </Text>
             ))}
         </View>
