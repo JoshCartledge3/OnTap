@@ -2,7 +2,6 @@ import {useContext, useRef} from 'react';
 import { PubsContext } from '../contexts/PubsContext';
 import {pubsService} from "../services/PubsService";
 import type {Coordinates} from "../types/Coordinates";
-const lastPubsInRangeRequest = useRef(0);
 
 export { PubsProvider } from '../contexts/PubsContext';
 
