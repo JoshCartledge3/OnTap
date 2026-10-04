@@ -2,18 +2,30 @@ import {onTapClient} from "../api/onTapClient";
 import type {Coordinates} from "../types/Coordinates";
 
 export const pubsService = {
-    getPubsAsync() {
-        return onTapClient.pubsClient.getPubs();
+    async getPubsAsync() {
+        try {
+            return await onTapClient.pubsClient.getPubs();
+        } catch (error) {
+            console.error('[PubsService] Loading pubs failed.', error);
+            throw error;
+        }
     },
 
-    getPubsInRangeAsync(currentLocation: Coordinates, radiusKilometres: number, signal?: AbortSignal) {
+    async getPubsInRangeAsync(currentLocation: Coordinates, radiusKilometres: number, signal?: AbortSignal) {
         const radiusMetres = radiusKilometres * 1000;
 
-        return onTapClient.pubsClient.getPubsInRange(
-            currentLocation.latitude,
-            currentLocation.longitude,
-            radiusMetres,
-            signal
-        );
+        try {
+            return await onTapClient.pubsClient.getPubsInRange(
+                currentLocation.latitude,
+                currentLocation.longitude,
+                radiusMetres,
+                signal
+            );
+        } catch (error) {
+            if (!signal?.aborted) {
+                console.error('[PubsService] Loading nearby pubs failed.', error);
+            }
+            throw error;
+        }
     }
 };

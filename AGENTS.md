@@ -58,7 +58,9 @@ Paths in this section are relative to `OnTap.Api/`.
 - `Mappers/` contains static concern mappers, such as `PubMapper.ToDto`. Keep
   entity-to-contract mapping there rather than repeating it in services.
 - Pass cancellation tokens through controller, service, and asynchronous EF
-  operations.
+  operations. Controllers accept `CancellationToken ct = default` separately
+  from request contracts; forward that same token to the service and EF calls
+  such as `ToListAsync(ct)`. Do not replace it with `CancellationToken.None`.
 
 ### Geography and migrations
 
@@ -153,6 +155,45 @@ Concern hook -> Optional concern context
   even when their implementation is asynchronous.
 - Preserve generated NSwag client method names, such as `getPubsInRange`.
   Do not hand-edit generated code to add the `Async` suffix.
+
+### Client logging
+
+- Log only errors, using `console.error` in client services. Include the
+  service/operation and the actual caught error so API response details remain
+  available for inspection.
+- Do not log from hooks, contexts/providers, or components. Components may still
+  show user-facing error messages; that is separate from diagnostic logging.
+- Do not add `__DEV__` guards, progress/success logs, timing logs, or cancellation
+  logs. Expected request cancellation is not an error.
+- After logging a failure, rethrow the original error. Logging must not change
+  returned data, swallow failures, or introduce fallback results.
+
+### Request cancellation
+
+- Use `AbortController`/`AbortSignal` for client HTTP cancellation and
+  `CancellationToken` for API operations. Keep NSwag's Fetch
+  `useAbortSignal: true` configuration; regenerate rather than hand-editing the
+  generated client when its configuration changes.
+- The concern hook owns the request lifecycle. For replaceable searches such as
+  nearby pubs, keep the active controller in a ref, abort the previous request
+  before starting another, and abort the active request during effect cleanup.
+- Client services accept an optional `signal?: AbortSignal` and pass it through
+  to the generated client. Services do not own React lifecycle or controllers.
+- Use `await` inside service `try` blocks so asynchronous request failures reach
+  their `catch`. Skip error logging when the supplied signal is aborted, but
+  rethrow so the hook can handle the cancellation.
+- The hook ignores an aborted request's result and handles its cancellation
+  silently. Genuine failures still propagate to the caller. Before updating
+  context, check that the request's signal has not been aborted.
+- In `finally`, clear the active controller only if it is still the controller
+  for that request; an older request must not clear a newer request's controller.
+- A hook-local controller coordinates only that hook instance. If multiple hook
+  instances must coordinate writes to the same shared search results, design
+  shared request ownership explicitly; do not assume their refs are shared.
+- Pass cancellation through the complete HTTP/API/database flow. Cancellation
+  is cooperative; retain the client result guard even when the API accepts a
+  cancellation token. Do not substitute a request counter for supported HTTP
+  cancellation.
 
 ### Generated concern clients and `onTapClient`
 
