@@ -21,7 +21,7 @@ export class PubsClient {
      * @return OK
      */
     getPubs(signal?: AbortSignal): Promise<PubDto[]> {
-        let url_ = this.baseUrl + "/api/pubs";
+        let url_ = this.baseUrl + "/api/pubs/Pubs";
         url_ = url_.replace(/[?&]$/, "");
 
         let options_: RequestInit = {
@@ -38,6 +38,58 @@ export class PubsClient {
     }
 
     protected processGetPubs(response: Response): Promise<PubDto[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubDto[];
+            return result200;
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<PubDto[]>(null as any);
+    }
+
+    /**
+     * @param latitude (optional) 
+     * @param longitude (optional) 
+     * @param radiusMetres (optional) 
+     * @return OK
+     */
+    getPubsInRange(latitude?: any | undefined, longitude?: any | undefined, radiusMetres?: any | undefined, signal?: AbortSignal): Promise<PubDto[]> {
+        let url_ = this.baseUrl + "/api/pubs/PubsInRange?";
+        if (latitude === null)
+            throw new globalThis.Error("The parameter 'latitude' cannot be null.");
+        else if (latitude !== undefined)
+            url_ += "Latitude=" + encodeURIComponent("" + latitude) + "&";
+        if (longitude === null)
+            throw new globalThis.Error("The parameter 'longitude' cannot be null.");
+        else if (longitude !== undefined)
+            url_ += "Longitude=" + encodeURIComponent("" + longitude) + "&";
+        if (radiusMetres === null)
+            throw new globalThis.Error("The parameter 'radiusMetres' cannot be null.");
+        else if (radiusMetres !== undefined)
+            url_ += "RadiusMetres=" + encodeURIComponent("" + radiusMetres) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            signal,
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetPubsInRange(_response);
+        });
+    }
+
+    protected processGetPubsInRange(response: Response): Promise<PubDto[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
