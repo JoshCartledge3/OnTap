@@ -6,13 +6,14 @@ export const pubsService = {
         return onTapClient.pubsClient.getPubs();
     },
 
-    getPubsInRangeAsync(currentLocation: Coordinates, radiusKilometres: number) {
+    getPubsInRangeAsync(currentLocation: Coordinates, radiusKilometres: number, signal?: AbortSignal) {
         const radiusMetres = radiusKilometres * 1000;
 
         return onTapClient.pubsClient.getPubsInRange(
             currentLocation.latitude,
             currentLocation.longitude,
-            radiusMetres
+            radiusMetres,
+            signal
         );
     }
 };
