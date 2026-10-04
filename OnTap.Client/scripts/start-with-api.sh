@@ -32,6 +32,7 @@ if [ ! -d "$api_dir" ]; then
     echo "OnTap.Api was not found at $api_dir" >&2
     exit 1
 fi
+api_dir=$(CDPATH= cd -- "$api_dir" && pwd)
 
 if ! command -v dotnet >/dev/null 2>&1; then
     echo "dotnet was not found on PATH" >&2
@@ -40,6 +41,11 @@ fi
 
 if ! command -v curl >/dev/null 2>&1; then
     echo "curl was not found on PATH" >&2
+    exit 1
+fi
+
+if ! command -v lsof >/dev/null 2>&1; then
+    echo "lsof was not found on PATH" >&2
     exit 1
 fi
 
@@ -60,30 +66,55 @@ trap 'exit 129' HUP
 trap 'exit 130' INT
 trap 'exit 143' TERM
 
-# Probe the address used by devices, not just the Mac's localhost listener.
-if curl --fail --silent --max-time 2 --output /dev/null "$api_url/openapi/v1.json"; then
-    echo "OnTap API is already running."
-else
-    (
-        cd "$api_dir"
-        exec dotnet run --launch-profile https
-    ) &
-    api_pid=$!
+# Restart this project's API rather than reusing an outdated process.
+running_api_pids=$({
+    lsof -t -iTCP:5164 -sTCP:LISTEN || true
+    lsof -t -iTCP:7243 -sTCP:LISTEN || true
+} | sort -u)
 
-    attempts=0
-    until curl --fail --silent --max-time 2 --output /dev/null "$api_url/openapi/v1.json"; do
-        if ! kill -0 "$api_pid" 2>/dev/null; then
-            echo "OnTap API failed to start. Check its output above." >&2
+for running_api_pid in $running_api_pids; do
+    running_command=$(ps -p "$running_api_pid" -o args= || true)
+    case "$running_command" in
+        "$api_dir"/bin/*/OnTap.Api|*" $api_dir"/bin/*/OnTap.Api.dll)
+            echo "Stopping OnTap API (PID $running_api_pid)."
+            kill "$running_api_pid" 2>/dev/null || true
+            attempts=0
+            while kill -0 "$running_api_pid" 2>/dev/null; do
+                attempts=$((attempts + 1))
+                if [ "$attempts" -ge 10 ]; then
+                    kill -KILL "$running_api_pid" 2>/dev/null || true
+                    break
+                fi
+                sleep 1
+            done
+            ;;
+        *)
+            echo "An unrelated process is using an API port (PID $running_api_pid). Stop it before starting OnTap." >&2
             exit 1
-        fi
-        attempts=$((attempts + 1))
-        if [ "$attempts" -ge 60 ]; then
-            echo "Timed out waiting for OnTap API to start." >&2
-            exit 1
-        fi
-        sleep 1
-    done
-fi
+            ;;
+    esac
+done
+
+(
+    cd "$api_dir"
+    exec dotnet run --launch-profile https
+) &
+api_pid=$!
+
+# Wait for the address used by devices before starting Expo.
+attempts=0
+until curl --fail --silent --max-time 2 --output /dev/null "$api_url/openapi/v1.json"; do
+    if ! kill -0 "$api_pid" 2>/dev/null; then
+        echo "OnTap API failed to start. Check its output above." >&2
+        exit 1
+    fi
+    attempts=$((attempts + 1))
+    if [ "$attempts" -ge 60 ]; then
+        echo "Timed out waiting for OnTap API to start." >&2
+        exit 1
+    fi
+    sleep 1
+done
 
 printf '\nDevice API: %s\nSwagger UI: https://localhost:7243/swagger\n\n' "$api_url"
 

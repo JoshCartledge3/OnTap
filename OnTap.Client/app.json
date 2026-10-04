@@ -21,6 +21,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Allow OnTap to use your location to find nearby pubs."
+        }
+      ]
+    ]
   }
 }
