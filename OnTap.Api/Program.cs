@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using OnTap.Api.Data;
+using OnTap.Api.Middleware;
 using OnTap.Api.Services;
 using OnTap.Api.Services.Abstraction;
 
@@ -30,6 +31,8 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+app.UseMiddleware<RequestLoggingMiddleware>();
 
 if (app.Environment.IsDevelopment())
 {

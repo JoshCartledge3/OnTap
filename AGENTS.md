@@ -62,6 +62,21 @@ Paths in this section are relative to `OnTap.Api/`.
   from request contracts; forward that same token to the service and EF calls
   such as `ToListAsync(ct)`. Do not replace it with `CancellationToken.None`.
 
+### API logging
+
+- Use the built-in `ILogger<T>` with structured message templates.
+- `Middleware/RequestLoggingMiddleware.cs` logs receipt and completion centrally;
+  register it before middleware/endpoints that handle requests. Do not duplicate
+  these request lifecycle logs in controllers or services.
+- Include request ID, HTTP method, and path. Completion logs also include the
+  response status and elapsed milliseconds. Log receipt/success at Information,
+  4xx responses at Warning, and 5xx responses/unhandled exceptions at Error.
+- Include the actual exception when logging an unhandled failure, then rethrow.
+  Logging must not change responses or swallow exceptions.
+- Client-disconnected requests are cancellation, logged at Information rather
+  than as errors. Preserve cancellation propagation.
+- Do not log request/response bodies, credentials, or headers by default.
+
 ### Geography and migrations
 
 - PostGIS is the chosen spatial extension. Pub locations use
