@@ -1,4 +1,4 @@
-import {useContext, useRef} from 'react';
+import {useContext} from 'react';
 import { PubsContext } from '../contexts/PubsContext';
 import {pubsService} from "../services/PubsService";
 import type {Coordinates} from "../types/Coordinates";
