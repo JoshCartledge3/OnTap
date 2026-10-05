@@ -1,5 +1,5 @@
 import type {ReactNode} from "react";
-import {PubsProvider} from "../contexts/PubsContext";
+import {PubsProvider} from "../hooks";
 
 type Props =  {
     children: ReactNode;

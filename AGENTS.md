@@ -16,7 +16,7 @@ Client component -> concern hook -> client service
     -> REST controller -> API service -> EF Core -> PostgreSQL/PostGIS
 
 Concern hook -> optional concern context (shared state and setters)
-App -> Providers -> concern providers -> app content
+Root route layout -> Providers -> concern providers -> navigator -> screen
 ```
 
 Keep concerns cohesive. Do not split pubs into pubs/local-pubs/search-pubs
@@ -246,7 +246,7 @@ Concern hook -> Optional concern context
 - Keep the concern context and its provider together in `src/contexts/<Concern>Context.tsx`.
 - Keep the app-wide composition component in `src/providers/Providers.tsx`. It accepts `children` and nests the required concern providers; it contains no fetching or business logic.
 - Export a concern provider through its hook module and the `src/hooks/index.ts` barrel, alongside the hook. The composition component imports providers from `../hooks`, not directly from context files, to preserve the lint boundary.
-- `App.tsx` imports the composition component from `./src/providers/Providers` and wraps app content in it. Do not maintain a duplicate composition component in `src/components/`.
+- `src/app/_layout.tsx` imports the composition component from `../providers/Providers` and wraps the root navigator in it. Do not maintain a duplicate composition component in `src/components/`.
 - Components consume concern state/operations through hooks; mounting a provider through the public hook module does not expose the raw context.
 
 ### Component organisation and styles
@@ -315,7 +315,10 @@ Run lint and typecheck for client code changes and report existing failures hone
 
 ## Navigation & Routing
 
-- The current app uses `App.tsx`; Expo Router is not currently installed. Do not introduce routing as part of unrelated work. When navigation is needed, use **Expo Router**, with routes under `src/app/` and non-route code outside that folder.
+- The app uses **Expo Router** with `main: "expo-router/entry"` in `package.json`. The old `App.tsx` and root `index.ts` entry files are no longer used.
+- Keep routes and navigation layouts under `src/app/`; keep screen implementations in `src/screens/`, and components, assets, hooks, services, and providers outside the routes folder.
+- `src/app/_layout.tsx` mounts the shared providers and root navigator. It does not require a consistent visual layout across screens; nested route layouts and screen options control headers and navigation chrome.
+- `src/app/index.tsx` exports `src/screens/Explore.tsx`, making Explore the default `/` route. A one-line screen re-export is sufficient when the route needs no additional logic.
 - Import `Link`, `router`, and `useLocalSearchParams` from `expo-router`.
 - Docs: https://docs.expo.dev/router/introduction.md
 
