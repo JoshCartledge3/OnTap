@@ -28,7 +28,10 @@
         {
           "locationWhenInUsePermission": "Allow OnTap to use your location to find nearby pubs."
         }
-      ]
+      ],
+      "@maplibre/maplibre-react-native",
+      "expo-router",
+      "expo-status-bar"
     ]
   }
 }
