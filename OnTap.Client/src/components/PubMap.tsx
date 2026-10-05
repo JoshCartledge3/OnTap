@@ -15,7 +15,6 @@ export default function PubMap() {
     const { startLiveUserLocationAsync, liveLocation } = useLocation();
     const mapRef = useRef<MapRef>(null);
     const [mapLoaded, setMapLoaded] = useState(false);
-    const [mapBearing, setMapBearing] = useState(0);
     const longitude = liveLocation?.longitude;
     const latitude = liveLocation?.latitude;
     const cameraCenter = useMemo<[number, number] | undefined>(() => {
@@ -42,7 +41,6 @@ export default function PubMap() {
     }
 
     async function onMapBoundsChanged(event: NativeSyntheticEvent<ViewStateChangeEvent>) {
-        setMapBearing(event.nativeEvent.bearing);
         await getPubsInBoundsAsync(event.nativeEvent.bounds);
     }
 
@@ -70,7 +68,6 @@ export default function PubMap() {
                         // Need to catch, but do nothing.
                     });
                 }}
-                onRegionIsChanging={(event) => setMapBearing(event.nativeEvent.bearing)}
                 onRegionDidChange={(event) => {
                     void onMapBoundsChanged(event).catch(() => {
                         // Need to catch, but do nothing.
@@ -92,7 +89,7 @@ export default function PubMap() {
                     />
                 </GeoJSONSource>
                 {liveLocation && (
-                    <UserLocationMarker location={liveLocation} mapBearing={mapBearing}/>
+                    <UserLocationMarker location={liveLocation}/>
                 )}
             </Map>
         </View>
