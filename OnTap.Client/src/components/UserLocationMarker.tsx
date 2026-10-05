@@ -1,34 +1,32 @@
-import { Image, StyleSheet, View } from 'react-native';
-import { Marker } from '@maplibre/maplibre-react-native';
-import type { UserLocation } from '../models';
+import {Image, StyleSheet, View} from 'react-native';
+import {Marker} from '@maplibre/maplibre-react-native';
+import type {UserLocation} from '../models';
 
 type UserLocationMarkerProps = {
     location: UserLocation;
     mapBearing: number;
 };
 
-export default function UserLocationMarker({ location, mapBearing }: UserLocationMarkerProps) {
+export default function UserLocationMarker({location, mapBearing}: UserLocationMarkerProps) {
     return (
         <Marker
             id="user-location"
-            lngLat={[location.longitude, location.latitude]}
-        >
+            lngLat={[location.longitude, location.latitude]}>
             <View
                 collapsable={false}
                 pointerEvents="none"
-                style={styles.locationIndicator}
-            >
+                style={styles.locationIndicator}>
                 {location.heading !== null && (
                     <Image
                         source={require('../assets/maps/location-heading-cone.png')}
                         style={[
                             styles.headingCone,
-                            { transform: [{ rotate: `${location.heading - mapBearing}deg` }] },
+                            {transform: [{rotate: `${location.heading - mapBearing}deg`}]},
                         ]}
                     />
                 )}
-                <View style={styles.locationHalo} />
-                <View style={styles.locationMarker} />
+                <View style={styles.locationHalo}/>
+                <View style={styles.locationMarker}/>
             </View>
         </Marker>
     );

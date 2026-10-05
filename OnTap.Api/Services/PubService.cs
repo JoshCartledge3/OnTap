@@ -40,4 +40,31 @@ public class PubService(OnTapDbContext dbContext) : IPubService
 
         return pubs.Select(PubMapper.ToDto).ToArray();
     }
+
+    public async Task<IEnumerable<PubDto>> GetPubsInBoundsAsync(GetPubsInBoundsRequest request, CancellationToken ct = default)
+    {
+        var west = request.West!.Value;
+        var south = request.South!.Value;
+        var east = request.East!.Value;
+        var north = request.North!.Value;
+        var bounds = new Polygon(new LinearRing([
+            new Coordinate(west, south),
+            new Coordinate(east, south),
+            new Coordinate(east, north),
+            new Coordinate(west, north),
+            new Coordinate(west, south)
+        ]))
+        {
+            SRID = 4326
+        };
+
+        var pubs = await dbContext.Pubs
+            .AsNoTracking()
+            .Where(pub => pub.Location.Intersects(bounds))
+            .OrderBy(pub => pub.Name)
+            .ThenBy(pub => pub.Id)
+            .ToListAsync(ct);
+
+        return pubs.Select(PubMapper.ToDto).ToArray();
+    }
 }
