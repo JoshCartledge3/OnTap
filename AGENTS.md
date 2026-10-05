@@ -157,6 +157,29 @@ Concern hook -> Optional concern context
 3. **Context/provider:** Minimal shared state storage and provider wiring. Expose state and the setters/dispatch needed by the hook. Do not fetch data, transform results, implement business rules, or orchestrate operations here. Any such logic requiring context access belongs in the hook.
 4. **Component/screen:** Rendering, styles, presentation-only state, and user interactions that invoke the concern hook's operations.
 
+### Client service declaration style
+
+- Export each client service as a `const` object containing only shorthand method
+  names. Declare the method implementations as named functions below the exported
+  object in the same file; do not define methods inline inside the object.
+- Keep implementation functions private to the module. Components access service
+  operations through the concern hook, as required by the dependency boundaries.
+
+```ts
+export const locationService = {
+    getUserLocationSnapshotAsync,
+    getLiveUserLocationAsync,
+};
+
+async function getUserLocationSnapshotAsync() {
+    // Implementation
+}
+
+async function getLiveUserLocationAsync() {
+    // Implementation
+}
+```
+
 ### Asynchronous operation naming
 
 - Public client service and hook operations that return a Promise use the `Async`
