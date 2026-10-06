@@ -7,6 +7,8 @@ type PubsContextValue = {
     setPubs: Dispatch<SetStateAction<PubDto[]>>;
     pubsInRange: PubDto[];
     setPubsInRange: Dispatch<SetStateAction<PubDto[]>>;
+    pubsInBounds: PubDto[];
+    setPubsInBounds: Dispatch<SetStateAction<PubDto[]>>;
 };
 
 export const PubsContext = createContext<PubsContextValue | undefined>(undefined);
@@ -14,9 +16,10 @@ export const PubsContext = createContext<PubsContextValue | undefined>(undefined
 export function PubsProvider({ children }: { children: ReactNode }) {
     const [pubs, setPubs] = useState<PubDto[]>([]);
     const [pubsInRange, setPubsInRange] = useState<PubDto[]>([]);
+    const [pubsInBounds, setPubsInBounds] = useState<PubDto[]>([])
 
     return (
-        <PubsContext value={{ pubs, pubsInRange, setPubs, setPubsInRange }}>
+        <PubsContext value={{ pubs, pubsInRange, pubsInBounds, setPubs, setPubsInRange, setPubsInBounds }}>
             {children}
         </PubsContext>
     );

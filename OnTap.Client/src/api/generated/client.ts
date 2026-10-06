@@ -105,6 +105,79 @@ export class PubsClient {
         }
         return Promise.resolve<PubDto[]>(null as any);
     }
+
+    /**
+     * @param west (optional) 
+     * @param south (optional) 
+     * @param east (optional) 
+     * @param north (optional) 
+     * @return OK
+     */
+    getPubsInBounds(west?: any | undefined, south?: any | undefined, east?: any | undefined, north?: any | undefined, signal?: AbortSignal): Promise<PubDto[]> {
+        let url_ = this.baseUrl + "/api/pubs/PubsInBounds?";
+        if (west === null)
+            throw new globalThis.Error("The parameter 'west' cannot be null.");
+        else if (west !== undefined)
+            url_ += "West=" + encodeURIComponent("" + west) + "&";
+        if (south === null)
+            throw new globalThis.Error("The parameter 'south' cannot be null.");
+        else if (south !== undefined)
+            url_ += "South=" + encodeURIComponent("" + south) + "&";
+        if (east === null)
+            throw new globalThis.Error("The parameter 'east' cannot be null.");
+        else if (east !== undefined)
+            url_ += "East=" + encodeURIComponent("" + east) + "&";
+        if (north === null)
+            throw new globalThis.Error("The parameter 'north' cannot be null.");
+        else if (north !== undefined)
+            url_ += "North=" + encodeURIComponent("" + north) + "&";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "GET",
+            signal,
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetPubsInBounds(_response);
+        });
+    }
+
+    protected processGetPubsInBounds(response: Response): Promise<PubDto[]> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubDto[];
+            return result200;
+            });
+        } else if (status === 400) {
+            return response.text().then((_responseText) => {
+            let result400: any = null;
+            result400 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("Bad Request", status, _responseText, _headers, result400);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<PubDto[]>(null as any);
+    }
+}
+
+export interface ProblemDetails {
+    type?: string | null;
+    title?: string | null;
+    status?: any | null;
+    detail?: string | null;
+    instance?: string | null;
+
+    [key: string]: any;
 }
 
 export interface PubDto {

@@ -1,5 +1,5 @@
 import { StyleSheet, View } from 'react-native';
-import PubMap from '../components/PubMap';
+import PubMap from '../components/map/PubMap';
 
 export default function Explore() {
     return (

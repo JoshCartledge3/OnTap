@@ -146,7 +146,7 @@ Concern hook -> Optional concern context
 
 - The concern hook is the only entry point from components and screens into that concern's data and operations.
 - Components and screens must not call services, instantiate the generated API client, make API requests directly, or read/write the concern's context directly. Import DTO types when needed; type imports do not bypass this boundary.
-- Only the concern hook calls its service and imports/consumes its optional context. Components and screens must not import context files, even to mount a provider. If provider composition is needed, expose it through the concern's hook module while keeping the raw context private.
+- Only the concern hook calls its service and consumes its optional context. Components and screens must not import context files, even to mount a provider. Expose providers through `src/providers/index.ts`, which may import/re-export named providers from context modules but must not expose raw contexts or consume them.
 - Services must never import or know about hooks, React, components, or contexts.
 - Contexts and their providers must never import or know about services. The hook coordinates the two; neither depends on the other.
 
@@ -156,6 +156,29 @@ Concern hook -> Optional concern context
 2. **Hook:** React state, effects, request lifecycle, loading/error state, and coordination with the optional context. Put logic here only when it cannot reasonably live in the service because it requires React or connects service results to UI state.
 3. **Context/provider:** Minimal shared state storage and provider wiring. Expose state and the setters/dispatch needed by the hook. Do not fetch data, transform results, implement business rules, or orchestrate operations here. Any such logic requiring context access belongs in the hook.
 4. **Component/screen:** Rendering, styles, presentation-only state, and user interactions that invoke the concern hook's operations.
+
+### Client service declaration style
+
+- Export each client service as a `const` object containing only shorthand method
+  names. Declare the method implementations as named functions below the exported
+  object in the same file; do not define methods inline inside the object.
+- Keep implementation functions private to the module. Components access service
+  operations through the concern hook, as required by the dependency boundaries.
+
+```ts
+export const locationService = {
+    getUserLocationSnapshotAsync,
+    getLiveUserLocationAsync,
+};
+
+async function getUserLocationSnapshotAsync() {
+    // Implementation
+}
+
+async function getLiveUserLocationAsync() {
+    // Implementation
+}
+```
 
 ### Asynchronous operation naming
 
@@ -245,13 +268,16 @@ Concern hook -> Optional concern context
 
 - Keep the concern context and its provider together in `src/contexts/<Concern>Context.tsx`.
 - Keep the app-wide composition component in `src/providers/Providers.tsx`. It accepts `children` and nests the required concern providers; it contains no fetching or business logic.
-- Export a concern provider through its hook module and the `src/hooks/index.ts` barrel, alongside the hook. The composition component imports providers from `../hooks`, not directly from context files, to preserve the lint boundary.
+- Export concern hooks through `src/hooks/index.ts` and concern providers through the dedicated `src/providers/index.ts` entry point. Do not export providers from hook modules or the hooks barrel. The composition component imports providers from `./index`, not directly from context files.
+- Keep provider composition and initialization gates in `src/providers/`. Initialization gates may call the concern hook to wait for required state restoration; persistence, effects, and coordination remain in the hook/service, not in the composition or context provider.
 - `src/app/_layout.tsx` imports the composition component from `../providers/Providers` and wraps the root navigator in it. Do not maintain a duplicate composition component in `src/components/`.
-- Components consume concern state/operations through hooks; mounting a provider through the public hook module does not expose the raw context.
+- Components consume concern state/operations through hooks; mounting a provider through the provider entry point does not expose the raw context.
 
 ### Component organisation and styles
 
-- Keep small components and their `StyleSheet.create()` definitions in one `.tsx` file, with styles outside/below the component function. Do not create separate style files by default.
+- Group related UI components under descriptive folders in `src/components/`, such as `layout/` and `map/`. Keep map components together in `src/components/map/`, including `PubMap.tsx`, `PubMarker.tsx`, `PubCluster.tsx`, and `UserLocationMarker.tsx`. These UI folders do not create new services, hooks, or contexts.
+- Keep a component's markup and styling together in its `.tsx` file by default, with style definitions outside/below the component function. When markup and styling are reused together, keep both in one shared component alongside the components that use it. When only style definitions are shared, place them in a group-specific file such as `src/components/map/mapStyles.ts`. Extract shared pieces for actual reuse, not merely to separate markup from styling; do not duplicate shared definitions or create a separate style file for every component.
+- MapLibre shared styles use typed TypeScript objects for `paint` and `layout` props. React Native shared styles can use `StyleSheet.create()`. Style modules contain presentation definitions only, with no fetching, concern state, or business logic.
 - Use native components such as `View` and `Text` and their `style` prop. Native iOS/Android styling uses JavaScript objects rather than CSS Modules. Browser-only CSS is not a replacement for native styles.
 - Use `import type` for React/DTO types. Avoid introducing extra files or layers for trivial wrappers.
 
@@ -274,8 +300,8 @@ Concern hook -> Optional concern context
 
 - Place context modules in `src/contexts/` and name them `<Concern>Context.ts(x)`. Place public concern hooks in `src/hooks/use<Concern>.ts(x)`.
 - Place services in `src/services/` and name them `<Concern>Service.ts`. ESLint rejects static service imports/re-exports outside the concern hook files. Components, contexts, utilities, and other services must not import services.
-- ESLint's `no-restricted-imports` rule in `eslint.config.js` rejects static context imports/re-exports and named React `useContext` imports outside those hook files. Use static ES imports for client dependencies; do not use dynamic imports, CommonJS, or namespace access to bypass this boundary.
-- Keep context implementation self-contained. Do not create barrel exports or alternative filenames to bypass the rule.
+- ESLint's `no-restricted-imports` rule in `eslint.config.js` rejects static context imports/re-exports and named React `useContext` imports outside those hook files, with one narrow exception: `src/providers/index.ts` may import/re-export named exports ending in `Provider`. That entry point still cannot import services, expose raw contexts, or import React `useContext`. Use static ES imports for client dependencies; do not use dynamic imports, CommonJS, or namespace access to bypass this boundary.
+- Keep context implementation self-contained. Apart from the dedicated provider entry point, do not create barrel exports or alternative filenames to bypass the rule.
 - Run `npm run lint` when changing the architecture rule.
 - These restrictions are configured directly in `eslint.config.js` using built-in rules. Do not recreate a separate custom-rule implementation or lint-rule test suite.
 

@@ -1,1 +1,3 @@
-export { usePubs, PubsProvider } from './usePubs';
+export {usePubs} from './usePubs';
+export {useLocation} from './useLocation';
+export {useTheme} from './useTheme';

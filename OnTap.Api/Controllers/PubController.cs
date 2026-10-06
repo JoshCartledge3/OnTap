@@ -25,4 +25,14 @@ public class PubController(IPubService pubService) : ControllerBase
         var pubs = await pubService.GetPubsInRangeAsync(request, ct);
         return Ok(pubs);
     }
+
+    [HttpGet("PubsInBounds", Name = "GetPubsInBounds")]
+    [ProducesResponseType(typeof(IEnumerable<PubDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult<IEnumerable<PubDto>>> GetPubsInBounds(
+        [FromQuery] GetPubsInBoundsRequest request, CancellationToken ct = default)
+    {
+        var pubs = await pubService.GetPubsInBoundsAsync(request, ct);
+        return Ok(pubs);
+    }
 }

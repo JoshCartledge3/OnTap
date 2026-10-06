@@ -7,4 +7,5 @@ public interface IPubService
 {
     Task<IEnumerable<PubDto>> GetPubsAsync(CancellationToken ct = default);
     Task<IEnumerable<PubDto>> GetPubsInRangeAsync(GetPubsInRangeRequest request, CancellationToken ct = default);
+    Task<IEnumerable<PubDto>> GetPubsInBoundsAsync(GetPubsInBoundsRequest request, CancellationToken ct = default);
 }

@@ -1,5 +1,5 @@
 import type {ReactNode} from "react";
-import {PubsProvider} from "../hooks";
+import {PubsProvider, ThemeProvider} from './index';
 
 type Props =  {
     children: ReactNode;
@@ -7,8 +7,10 @@ type Props =  {
 
 export default function Providers ({ children }: Props) {
     return (
-        <PubsProvider>
-            {children}
-        </PubsProvider>
+        <ThemeProvider>
+            <PubsProvider>
+                {children}
+            </PubsProvider>
+        </ThemeProvider>
     )
 }
