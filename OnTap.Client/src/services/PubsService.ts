@@ -1,14 +1,34 @@
 import {onTapClient} from "../api/onTapClient";
 import type {Coordinates} from "../types/Coordinates";
 import type {MapBounds} from "../types/MapBounds";
+import Supercluster from 'supercluster';
+import type { PubDto } from '../api/generated/client';
+import { toGeoJsonFeatureCollection } from '../mappers/toGetJsonFeatureCollection';
+import type { PubProperties } from '../mappers/toGetJsonFeatureCollection';
 
 export const pubsService = {
     getPubsAsync,
     getPubsInRangeAsync,
-    getPubsInBoundsAsync
+    getPubsInBoundsAsync,
+    createMapClusterIndex,
+    getMapPoints,
+    getClusterExpansionZoom,
 };
 
 const client = onTapClient.pubsClient;
+
+function createMapClusterIndex(pubs: readonly PubDto[]) {
+    return new Supercluster<PubProperties>({ radius: 50, maxZoom: 16 })
+        .load(toGeoJsonFeatureCollection(pubs).features);
+}
+
+function getMapPoints(index: Supercluster<PubProperties>, bounds: MapBounds, zoom: number) {
+    return index.getClusters(bounds, Math.floor(zoom));
+}
+
+function getClusterExpansionZoom(index: Supercluster<PubProperties>, clusterId: number) {
+    return index.getClusterExpansionZoom(clusterId);
+}
 
 async function getPubsAsync() {
     try {

@@ -1,10 +1,10 @@
-import {useContext, useEffect, useRef} from 'react';
+import {useCallback, useContext, useEffect, useMemo, useRef} from 'react';
 import { PubsContext } from '../contexts/PubsContext';
 import {pubsService} from "../services/PubsService";
 import type {Coordinates} from "../types/Coordinates";
 import type {MapBounds} from "../types/MapBounds";
 
-export function usePubs() {
+export function usePubs(mapBounds?: MapBounds, mapZoom = 15) {
     const context = useContext(PubsContext);
     if (!context) {
         throw new Error('usePubs must be used within PubsProvider.');
@@ -12,6 +12,18 @@ export function usePubs() {
     const { pubs, pubsInRange, setPubs, setPubsInRange, pubsInBounds, setPubsInBounds } = context;
     const nearbyController = useRef<AbortController | null>(null);
     const inBoundsController = useRef<AbortController | null>(null);
+    const clusterIndex = useMemo(
+        () => pubsService.createMapClusterIndex(pubsInBounds),
+        [pubsInBounds],
+    );
+    const mapPoints = useMemo(
+        () => mapBounds ? pubsService.getMapPoints(clusterIndex, mapBounds, mapZoom) : [],
+        [clusterIndex, mapBounds, mapZoom],
+    );
+    const getClusterExpansionZoom = useCallback(
+        (clusterId: number) => pubsService.getClusterExpansionZoom(clusterIndex, clusterId),
+        [clusterIndex],
+    );
     useEffect(() => {
         return () => {
             nearbyController.current?.abort();
@@ -74,6 +86,8 @@ export function usePubs() {
         pubs,
         pubsInRange,
         pubsInBounds,
+        mapPoints,
+        getClusterExpansionZoom,
         getPubsAsync,
         getPubsInRangeAsync,
         getPubsInBoundsAsync

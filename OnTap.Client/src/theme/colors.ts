@@ -9,6 +9,11 @@ export type ThemeColors = {
     onAccent: string;
     selectedControl: string;
     onSelectedControl: string;
+    mapMarkerBackground: string;
+    mapMarkerBorder: string;
+    mapMarkerForeground: string;
+    mapMarkerDivider: string;
+    mapMarkerSelectedBorder: string;
 };
 
 export type Theme = {
@@ -27,6 +32,11 @@ export const lightTheme = {
         onAccent: '#123329',
         selectedControl: '#123329',
         onSelectedControl: '#F6F2E5',
+        mapMarkerBackground: '#F6F3E9',
+        mapMarkerBorder: '#123329',
+        mapMarkerForeground: '#123329',
+        mapMarkerDivider: '#D7DCCE',
+        mapMarkerSelectedBorder: '#B8954F',
     },
 } satisfies Theme;
 
@@ -42,5 +52,10 @@ export const darkTheme = {
         onAccent: '#02120B',
         selectedControl: '#0B281A',
         onSelectedControl: '#F6F2E5',
+        mapMarkerBackground: '#F6F2E5',
+        mapMarkerBorder: '#A4B7A9',
+        mapMarkerForeground: '#123329',
+        mapMarkerDivider: '#D7DCCE',
+        mapMarkerSelectedBorder: '#B8954F',
     },
 } satisfies Theme;

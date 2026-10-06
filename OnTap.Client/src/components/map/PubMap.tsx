@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import {StyleSheet, View} from 'react-native';
 import type {NativeSyntheticEvent} from 'react-native';
-import {Camera, GeoJSONSource, Layer, Map} from '@maplibre/maplibre-react-native';
-import type { MapRef, ViewStateChangeEvent } from '@maplibre/maplibre-react-native';
+import {Camera, Marker, Map} from '@maplibre/maplibre-react-native';
+import type { CameraRef, MapRef, ViewStateChangeEvent } from '@maplibre/maplibre-react-native';
+import {PubMarker} from './PubMarker';
+import {PubCluster} from "./PubCluster";
 import { useLocation, usePubs, useTheme } from '../../hooks';
 import UserLocationMarker from './UserLocationMarker';
-import {toGeoJsonFeatureCollection} from "../../mappers/toGetJsonFeatureCollection";
+import type { MapBounds } from '../../types/MapBounds';
+import { pubMarkerPointerX } from './mapStyles';
 
 export default function PubMap() {
     const { mapTheme } = useTheme();
@@ -16,6 +19,9 @@ export default function PubMap() {
     const [mapLoaded, setMapLoaded] = useState(false);
     const longitude = liveLocation?.longitude;
     const latitude = liveLocation?.latitude;
+    const cameraRef = useRef<CameraRef>(null);
+    const [selectedPubId, setSelectedPubId] = useState<string>();
+    const [mapView, setMapView] = useState<{ bounds: MapBounds; zoom: number }>();
     const cameraCenter = useMemo<[number, number] | undefined>(() => {
         if (!mapLoaded || longitude == null || latitude == null) return undefined;
         return [longitude, latitude];
@@ -33,24 +39,25 @@ export default function PubMap() {
     async function onMapLoaded() {
         setMapLoaded(true);
 
-        const bounds = await mapRef.current?.getBounds();
+        const [bounds, zoom] = await Promise.all([
+            mapRef.current?.getBounds(),
+            mapRef.current?.getZoom(),
+        ]);
         if (bounds) {
+            setMapView({ bounds, zoom: zoom ?? 15 });
             await getPubsInBoundsAsync(bounds);
         }
     }
 
     async function onMapBoundsChanged(event: NativeSyntheticEvent<ViewStateChangeEvent>) {
+        setMapView({ bounds: event.nativeEvent.bounds, zoom: event.nativeEvent.zoom });
         await getPubsInBoundsAsync(event.nativeEvent.bounds);
     }
 
     //#endregion
     //#region Pubs
 
-    const {pubsInBounds, getPubsInBoundsAsync} = usePubs();
-    const pubGeoJson = useMemo(
-        () => toGeoJsonFeatureCollection(pubsInBounds),
-        [pubsInBounds],
-    );
+    const {mapPoints, getClusterExpansionZoom, getPubsInBoundsAsync} = usePubs(mapView?.bounds, mapView?.zoom);
 
     //#endregion
 
@@ -73,20 +80,50 @@ export default function PubMap() {
                     });
                 }}>
                 <Camera
+                    ref={cameraRef}
                     center={cameraCenter}
                     zoom={15}
                     duration={1500}
                     easing="ease"/>
-                <GeoJSONSource id="pubs" data={pubGeoJson}>
-                    <Layer
-                        id="pub-points"
-                        type="circle"
-                        paint={{
-                            'circle-radius': 6,
-                            'circle-color': '#e87924',
-                        }}
-                    />
-                </GeoJSONSource>
+                {mapPoints.map(point => {
+                    const properties = point.properties;
+                    const [longitude, latitude] = point.geometry.coordinates;
+                    const lngLat: [number, number] = [longitude, latitude];
+
+                    if (properties.cluster) {
+                        const id = `cluster-${properties.cluster_id}`;
+                        return (
+                            <Marker
+                                key={id}
+                                id={id}
+                                lngLat={lngLat}
+                                anchor="bottom-left"
+                                offset={[-pubMarkerPointerX, 0]}
+                                onPress={() => cameraRef.current?.easeTo({
+                                    center: lngLat,
+                                    zoom: getClusterExpansionZoom(properties.cluster_id),
+                                    duration: 500,
+                                })}
+                            >
+                                <PubCluster count={properties.point_count} />
+                            </Marker>
+                        );
+                    }
+
+                    const pubId = String(point.id);
+                    return (
+                        <Marker
+                            key={`pub-${pubId}`}
+                            id={`pub-${pubId}`}
+                            lngLat={lngLat}
+                            anchor="bottom-left"
+                            offset={[-pubMarkerPointerX, 0]}
+                            onPress={() => setSelectedPubId(pubId)}
+                        >
+                            <PubMarker rating={properties.rating} active={selectedPubId === pubId} />
+                        </Marker>
+                    );
+                })}
                 {liveLocation && (
                     <UserLocationMarker location={liveLocation}/>
                 )}

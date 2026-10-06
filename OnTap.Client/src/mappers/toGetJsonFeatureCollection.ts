@@ -1,8 +1,10 @@
 import type { FeatureCollection, Point } from 'geojson';
 import type { PubDto } from '../api/generated/client';
 
-type PubProperties = {
+export type PubProperties = {
     name: string;
+    rating: number | null;
+    cluster?: false;
 };
 
 export function toGeoJsonFeatureCollection(pubs: readonly PubDto[]): FeatureCollection<Point, PubProperties> {
@@ -17,6 +19,8 @@ export function toGeoJsonFeatureCollection(pubs: readonly PubDto[]): FeatureColl
             },
             properties: {
                 name: pub.name,
+                // The API does not return ratings yet.
+                rating: null,
             },
         })),
     };
