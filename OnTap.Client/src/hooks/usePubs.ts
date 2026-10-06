@@ -4,8 +4,6 @@ import {pubsService} from "../services/PubsService";
 import type {Coordinates} from "../types/Coordinates";
 import type {MapBounds} from "../types/MapBounds";
 
-export { PubsProvider } from '../contexts/PubsContext';
-
 export function usePubs() {
     const context = useContext(PubsContext);
     if (!context) {

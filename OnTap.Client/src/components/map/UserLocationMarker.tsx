@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { GeoJSONSource, Images, Layer } from '@maplibre/maplibre-react-native';
 import type { Feature, Point } from 'geojson';
-import type { UserLocation } from '../models';
+import type { UserLocation } from '../../models';
 
 const images = {
-    'user-location-heading-cone': require('../assets/maps/location-heading-cone.png'),
+    'user-location-heading-cone': require('../../assets/maps/location-heading-cone.png'),
 };
 
 type UserLocationMarkerProps = {

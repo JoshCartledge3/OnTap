@@ -2,14 +2,13 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import {StyleSheet, View} from 'react-native';
 import type {NativeSyntheticEvent} from 'react-native';
 import {Camera, GeoJSONSource, Layer, Map} from '@maplibre/maplibre-react-native';
-import type { MapRef, StyleSpecification, ViewStateChangeEvent } from '@maplibre/maplibre-react-native';
-import mapStyle from '../assets/maps/ontap-map-style-light.json';
-import { useLocation } from '../hooks/useLocation';
+import type { MapRef, ViewStateChangeEvent } from '@maplibre/maplibre-react-native';
+import { useLocation, usePubs, useTheme } from '../../hooks';
 import UserLocationMarker from './UserLocationMarker';
-import {usePubs} from "../hooks";
-import {toGeoJsonFeatureCollection} from "../mappers/toGetJsonFeatureCollection";
+import {toGeoJsonFeatureCollection} from "../../mappers/toGetJsonFeatureCollection";
 
 export default function PubMap() {
+    const { mapTheme } = useTheme();
     //#region Location
 
     const { startLiveUserLocationAsync, liveLocation } = useLocation();
@@ -60,7 +59,7 @@ export default function PubMap() {
             <Map
                 ref={mapRef}
                 style={StyleSheet.absoluteFill}
-                mapStyle={mapStyle as StyleSpecification}
+                mapStyle={mapTheme}
                 logo={false}
                 attribution={false}
                 onDidFinishLoadingMap={() => {

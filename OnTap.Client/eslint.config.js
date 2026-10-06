@@ -24,4 +24,24 @@ module.exports = defineConfig([
             }],
         },
     },
+    {
+        files: ['src/providers/index.ts'],
+        rules: {
+            'no-restricted-imports': ['error', {
+                paths: [{
+                    name: 'react',
+                    importNames: ['useContext'],
+                    message: 'Consume context through the concern hook in src/hooks/.',
+                }],
+                patterns: [{
+                    group: ['**/contexts/**', '**/context/**', '**/*Context', '**/*Context.*'],
+                    allowImportNamePattern: 'Provider$',
+                    message: 'The provider entry point may only expose named providers, not raw contexts.',
+                }, {
+                    group: ['**/services/**', '**/*Service', '**/*Service.*'],
+                    message: 'Service files may only be imported by concern hooks in src/hooks/.',
+                }],
+            }],
+        },
+    },
 ]);
