@@ -2,13 +2,13 @@ import {LocateFixed} from "lucide-react-native";
 import {Pressable} from "react-native";
 import {useTheme} from "../../hooks";
 import {GlassSurface} from "../layout/GlassSurface";
-import {mapStyles} from "./mapStyles";
+import {mapStyles} from "../map/mapStyles";
 
 type Props = {
     onRecenter : () => void;
 }
 
-export function Recenter({onRecenter}: Props) {
+export function RecenterButton({onRecenter}: Props) {
 
     const {colors} = useTheme();
 

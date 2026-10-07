@@ -1,0 +1,487 @@
+Source: https://www.maptoolkit.org/tos
+Downloaded: 2026-10-07
+
+Terms of Service - Maptoolkit.org Community License
+
+ Maptoolkit.orgFree Vector Tile Server
+
+ Documentation
+ MapMaker
+
+ Support
+
+ Service Status
+
+ Legal
+
+Terms of Service
+
+These Terms govern access to and use of the free Maptoolkit.org Community License - including the tile, style, font, and sprite endpoints. A paid Enterprise License is available separately under its own agreement.
+
+ Last updated
+ 1 July 2026
+
+ Effective
+ 1 July 2026
+
+ License
+ Community License
+
+ Governing law
+ Republic of Austria
+
+On this page
+
+Introduction & parties
+
+Definitions
+
+Scope of the Service
+
+Eligibility
+
+License grant
+
+Permitted use
+
+Prohibited use
+
+Attribution requirements
+
+Fair use and rate limits
+
+OpenStreetMap & third-party content
+
+Intellectual property
+
+Privacy and data protection
+
+Suspension and termination
+
+Disclaimer of warranties
+
+Limitation of liability
+
+Indemnification
+
+Changes
+
+Governing law and jurisdiction
+
+Miscellaneous
+
+Contact
+
+§ 01Introduction & parties
+
+These Terms of Service (the “Terms”) govern access to and use of the map services made available at and through maptoolkit.org, including the tile, style, font, and sprite endpoints listed in Section 3 (collectively, the “Service”).
+
+The Service is operated by:
+
+Toursprung GmbH
+
+Mariahilfer Straße 93/20, 1060 Vienna, Austria
+
+Commercial register: FN 432876h, Commercial Court Vienna
+
+Contact: [email protected]
+
+(the “Provider”, “we”, “us”)
+
+By accessing, embedding, requesting from, caching, or otherwise using the Service, you (the “User”, “you”) agree to be bound by these Terms. If you do not agree, you must not use the Service.
+
+The Service is offered free of charge under a Community License, a non-exclusive, non-transferable, revocable license granted on the conditions set out below. A paid Enterprise License is available separately and is governed by its own agreement; these Terms do not apply to the Enterprise offering.
+
+§ 02Definitions
+
+“Maps” means any rendered or unrendered map output produced from the Service, including raster renderings, vector tiles, style sheets, glyphs, sprites, and terrain data.
+
+“Application” means any website, web application, mobile application, embedded view, or other digital product that consumes the Service.
+
+“End User” means a natural person who interacts with an Application that uses the Service.
+
+“Request” means a single HTTP(S) request to any Service endpoint, whether served from origin or from a cache controlled by us or a third party (e.g., Cloudflare). Rate-limit references to “uncached requests” mean requests served from origin.
+
+“OSM Data” means data derived from OpenStreetMap, licensed under the Open Database License (ODbL) by the OpenStreetMap Foundation and its contributors.
+
+§ 03Scope of the Service
+
+The Service consists of best-effort, shared community infrastructure that delivers, among other things:
+
+Vector tile data and pre-defined map styles (e.g., Summer, Light, Hiking, Winter, Dark, Street);
+
+Associated glyph (font) and sprite resources;
+
+Terrain and hillshade data sourced from third-party providers (currently tiles.mapterhorn.com);
+
+Documentation, sample code, and attribution assets published on maptoolkit.org.
+
+Endpoints currently include, without limitation: styles.maptoolkit.org, tiles.maptoolkit.org, fonts.maptoolkit.org. We may add, change, deprecate, or remove endpoints at any time without prior notice.
+
+The Service is provided “as is” and “as available”, on a best-effort basis. No service-level agreement, uptime guarantee, support obligation, or backwards-compatibility commitment exists under these Terms.
+
+§ 04Eligibility (Who may use the Service)
+
+Professional use only. The Service is intended solely for use by businesses, corporations, independent professionals, developers, and non-profit organizations acting in a professional, commercial, educational, or organizational capacity. The Service is not intended for personal, family, or household use (consumers / Verbraucher within the meaning of the Austrian Consumer Protection Act - Konsumentenschutzgesetz, KSchG). By accessing or using the Service, you represent and warrant that you are registering and using the Service exclusively in your capacity as a business, professional, or organizational entity, and not as a consumer.
+
+In addition, you may use the Service under the Community License only if at least one of the following applies:
+
+(a)
+Non-commercial use - your use is for academic, educational, scientific, journalistic, governmental non-revenue-generating, or recognized non-profit purposes; or
+
+(b)
+Open-source use - your use is in a project distributed under an Open Source Initiative-approved license, provided that the project itself is not operated as a commercial service; or
+
+(c)
+Small commercial use - your organization (together with all affiliates under common control) has, in its most recent completed financial year, (i) consolidated gross revenue of less than EUR 1,000,000 and (ii) fewer than 10 full-time-equivalent employees.
+
+Both thresholds in (c) must be satisfied simultaneously. If you exceed either threshold, you must obtain an Enterprise License to continue using the Service.
+
+If your eligibility changes (e.g., through growth, funding, or acquisition), you must, within thirty (30) days of becoming ineligible, either cease use of the Service or migrate to an Enterprise License.
+
+We may, at our discretion, request reasonable evidence of eligibility, and may suspend access pending verification.
+
+§ 05License grant
+
+Subject to your continuous compliance with these Terms, we grant you a worldwide, non-exclusive, non-transferable, non-sublicensable, revocable, royalty-free license to:
+
+access the Service via HTTPS from an Application;
+
+render, display, and cache map output to End Users in the ordinary course of operating that Application;
+
+store style sheets, sprites, and glyphs in transient browser or CDN caches strictly as needed for normal rendering.
+
+All rights not expressly granted are reserved.
+
+§ 06Permitted use
+
+You may use the Service to display interactive Maps to End Users in an Application, provided you comply with these Terms and with the attribution requirements in Section 8.
+
+§ 07Prohibited use
+
+You must not, and must not permit any third party to:
+
+(a)
+Use the Service for backend-only processing, server-side rendering for non-interactive purposes, machine-to-machine workloads, batch jobs, or any non-interactive bulk consumption;
+
+(b)
+Download, scrape, mirror, copy, or otherwise extract tiles, fonts, sprites, terrain data, or any other Service output in bulk, or generate offline tile sets or archives from the Service - except for downloading and copying map stylesheets as expressly permitted under Section 11 (Permitted style use);
+
+(c)
+Resell, sublicense, repackage, rebrand, white-label, or redistribute the Service, in whole or in part, including as part of a SaaS, PaaS, API, or similar offering;
+
+(d)
+Use the Service in printed media, exported PDFs, screenshots embedded in offline reports, presentations, or other static documents, or any other non-interactive printed or fixed media (for such use, see Printmaps.net or obtain an Enterprise License);
+
+(e)
+Use the Service in any Application that primarily features or is intended to facilitate:
+
+(i)
+adult or sexually explicit content;
+
+(ii)
+gambling, betting, or lotteries;
+
+(iii)
+get-rich-quick schemes, multi-level marketing, or similar deceptive financial offerings;
+
+(iv)
+predatory lending or high-interest consumer credit;
+
+(v)
+hate speech, harassment, incitement to violence, extremist content, or content unlawful under Austrian or EU law;
+
+(f)
+Remove, hide, alter, obscure, or otherwise interfere with attribution, copyright notices, or trademarks (see Section 8);
+
+(g)
+Reverse-engineer, decompile, or attempt to derive source code, internal data models, or proprietary cartographic style decisions from the Service, except to the extent such restriction is prohibited by applicable law;
+
+(h)
+Use the Service, or any output of the Service, to train, fine-tune, evaluate, or otherwise build machine-learning or artificial-intelligence models, including on aggregated tile, style, glyph, or sprite content;
+
+(i)
+Probe, scan, attack, overload, or attempt to circumvent the rate limits, abuse-protection mechanisms, or security controls of the Service;
+
+(j)
+Use the Service in connection with any unlawful activity or in violation of any applicable law, regulation, or third-party right.
+
+We may, at our sole discretion, determine whether a particular use falls within a prohibited category. Where a use case is ambiguous, contact us before deploying.
+
+§ 08Attribution requirements
+
+Every Map served through the Service must visibly attribute both Maptoolkit and OpenStreetMap, at all times and across all viewports, zoom levels, and device orientations.
+
+Required elements
+
+Maptoolkit logo - displayed clearly on the Map with a minimum height of 24 CSS pixels (or 24 pt / 24 dp on mobile platforms), without distortion or recoloring beyond the variants provided by us.
+
+Copyright line - the text © Maptoolkit © Openstreetmap displayed in the bottom-right area of the Map, with Maptoolkit linking to https://www.maptoolkit.com/copyright/ and Openstreetmap linking to https://www.openstreetmap.org/copyright. Both links must be active and clickable.
+
+Legibility - both the logo and the copyright line must remain fully legible, visible, and unobstructed. Custom controls, overlays, popups, and z-indices must not hide, cover, or reduce the contrast of attribution elements.
+
+Official attribution helper libraries are published as @maptoolkit/maplibre-gl-logo and @maptoolkit/leaflet-logo on npm and are the recommended way to comply with this Section.
+
+Failure to comply with this Section is a material breach of these Terms.
+
+§ 09Fair use and rate limits
+
+To keep shared infrastructure stable for everyone, adaptive rate limiting applies to all traffic. Limits are expressed in uncached requests per second (typically a small minority of total requests, as ≥95% of requests are served from edge caches).
+
+ Tier
+ Sustained
+ Burst
+
+ Unregistered (default)
+ 10 uncached req/s
+ 50 uncached req/s
+
+ Registered Referer / User-Agent
+ 100 uncached req/s
+ 500 uncached req/s
+
+Registration is free, requires no contract or payment, and is available at maptoolkit.org. Limits may be applied per Referer, per User-Agent, per origin IP, per network, per API key (where applicable), or per any combination thereof.
+
+We may, at our sole discretion and without notice:
+
+delay, throttle, return HTTP 429 responses, or temporarily block requests that exceed reasonable interactive usage patterns;
+
+adjust thresholds globally or for individual Users;
+
+apply stricter limits to traffic patterns indicative of scraping, mirroring, or automated extraction.
+
+Sustained traffic that exceeds the limits applicable to your tier is grounds for suspension. Persistent or willful violation is grounds for termination under Section 13.
+
+§ 10OpenStreetMap and third-party content
+
+The Service relies substantially on OSM Data, which is © OpenStreetMap contributors and made available under the Open Database License (ODbL), with map tiles licensed under the Creative Commons Attribution-ShareAlike (CC BY-SA) where applicable. Your use of OSM-derived output is additionally subject to those upstream licenses. The attribution requirements in Section 8 are designed to satisfy the OSM Attribution Guidelines; you remain responsible for verifying compliance.
+
+The rendered map output and the tiles delivered through the Service (including raster tiles, vector tiles, glyphs, and sprites) are made available to you as a Produced Work within the meaning of the ODbL, and not as a Derivative Database. Attribution under Section 8 must be preserved at all times. You are solely responsible for the ODbL compliance of any further downstream processing you may perform on data extracted from the Service.
+
+Terrain and hillshade data may be served from third-party providers (currently tiles.mapterhorn.com); such third-party content is subject to the licenses of its respective sources, including (without limitation) public-domain elevation datasets and their attribution requirements. We publish current upstream sources and attributions at maptoolkit.com/copyright.
+
+§ 11Intellectual property
+
+Proprietary Materials
+
+As between you and us, all rights, title, and interest in and to the Service and all materials made available through or in connection with it - including but not limited to the cartographic schemas, map stylesheets (JSON and vector-tile styles), vector layer definitions, configurations, glyphs, sprites, original tile schemas, software, documentation, the “Maptoolkit” name and logo, and all related trademarks (collectively, the “Materials”) - are and remain the exclusive property of Toursprung GmbH or its licensors. The Materials are proprietary. No rights are granted by implication, estoppel, or otherwise.
+
+No general open-source license granted
+
+No part of the Materials is licensed to you under any general open-source license (such as MIT, Apache, BSD, or GPL) merely because source artefacts (e.g., style JSON, schema definitions, sample code) are made publicly accessible via a Maptoolkit GitHub repository. Intellectual-property ownership of the Materials remains with Toursprung GmbH at all times. The specific rights you receive over map stylesheets published in such repositories - including the rights to view, download, copy, modify, and self-host them - are set out under “Permitted style use” below and, where provided, in the LICENSE file accompanying that repository.
+
+Permitted style use
+
+Notwithstanding the foregoing, and subject to your continuous compliance with these Terms (including the eligibility limits in Section 4 and the attribution obligations in Section 8), we grant you a limited, non-exclusive, non-transferable, revocable, royalty-free license to:
+
+(a)
+view, download, and copy Maptoolkit map stylesheets (including style JSON, sprite references, and glyph references);
+
+(b)
+modify, adapt, customize, or create derivative works of those stylesheets, including via the official Maptoolkit MapMaker; and
+
+(c)
+host and serve those stylesheets - original or modified - from your own infrastructure for use within your Application,
+
+provided that, in each case, all tile, glyph, and sprite references in such stylesheets and derivative works are served exclusively from official Maptoolkit endpoints (currently tiles.maptoolkit.org, styles.maptoolkit.org, fonts.maptoolkit.org, and successors we publish); you must not redirect any such reference to a third-party tile provider or to your own or any other independent tile-rendering infrastructure. This grant is conditional and terminates automatically, with immediate effect, upon any breach.
+
+If you modify a stylesheet and host, distribute, or publish that modified version, you must retain the applicable copyright notice and this license, so that the modified stylesheet remains bound to the tile-server condition above for any further recipient.
+
+Reserved prohibitions
+
+Except as expressly permitted in the paragraph above, and without the prior written permission of Toursprung GmbH, you may not:
+
+(a)
+copy, redistribute, publish, translate, mirror, or sublicense the Materials or any part thereof outside of the originating GitHub repository or your own Application;
+
+(b)
+use the Maptoolkit cartographic schemas, vector layer definitions, or stylesheets to serve, render, or otherwise host tile, glyph, or sprite data from your own infrastructure or any third-party service, or to build a competing tile or map-rendering service, in whole or in part (unauthorized self-hosting of tile infrastructure);
+
+(c)
+port, adapt, retarget, or otherwise rebuild Maptoolkit stylesheets (or derivative styles) to consume tile, glyph, or sprite data from any source other than the official Maptoolkit endpoints, including but not limited to other commercial tile providers (e.g., Mapbox, MapTiler, Stadia), self-hosted OSM-based tile servers, or any other third-party map service;
+
+(d)
+replicate, reimplement, reverse-engineer, or otherwise reconstruct the Maptoolkit cartographic schema, vector layer definitions, tile schema, or stylesheet logic - in whole or in substantial part - in any other style, schema, dataset, or product, whether for your own use or for third parties;
+
+(e)
+commercialize or otherwise exploit the Materials independently of the Service (e.g., by sublicensing the styles as a standalone product).
+
+Free Service does not transfer rights
+
+The provision of the Service free of charge under the Community License does not grant, imply, or transfer any intellectual-property rights, licenses, or ownership of the underlying styles, schemas, or Materials to you beyond the limited license expressly stated above. Access to the Service endpoints is governed exclusively by these Terms.
+
+The Community License does not grant you any right to use the Maptoolkit name or logo except as strictly required by the attribution obligations in Section 8.
+
+User feedback, suggestions, and bug reports submitted to us may be used by us for any purpose without restriction or obligation, except that we will not publicly attribute them to you without your consent.
+
+§ 12Privacy and data protection
+
+The Service is designed to be privacy-respecting and to comply with the EU General Data Protection Regulation (GDPR):
+
+Service infrastructure is hosted in the European Union;
+
+The Service does not set tracking cookies, fingerprint End Users, or maintain user-level profiles;
+
+The Service does not require API keys, accounts, or sign-up by End Users.
+
+Some operational logging is necessary for security, abuse prevention, billing reconciliation with our CDN provider (Cloudflare), and capacity planning. Such logs are kept to the minimum necessary, retained for no longer than 15 days, and not used to build End User profiles or sold to third parties. IP addresses and User-Agent strings may be processed transiently for the purposes set out in Article 6(1)(f) GDPR (legitimate interest in operating and protecting the Service).
+
+When you embed the Service in your own Application, you act as the data controller for your End Users and are responsible for your own privacy disclosures, cookie banners, and lawful-basis determinations under GDPR. We act as an independent controller for the limited operational processing described above and do not act as your processor unless a separate data-processing agreement has been signed.
+
+Our full privacy policy is published at maptoolkit.org/privacy.
+
+§ 13Suspension and termination
+
+We may suspend or terminate your access to the Service, in whole or in part, at any time and without prior notice, if:
+
+(a)
+you breach these Terms, including the eligibility, prohibited-use, attribution, or fair-use provisions;
+
+(b)
+your use endangers the stability, security, or integrity of the Service or its users;
+
+(c)
+we are required to do so by law, regulation, or order of a competent authority;
+
+(d)
+we decide, at our discretion, to discontinue the Community License offering in whole or in part.
+
+You may stop using the Service at any time. Sections that by their nature should survive termination (including Sections 11, 14, 15, 17, and 18) survive.
+
+We may discontinue the Community License or any endpoint with 90-day notice published on maptoolkit.org, except where shorter or no notice is justified by abuse, legal compulsion, or security risk.
+
+§ 14Disclaimer of warranties
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICE IS PROVIDED “AS IS” AND “AS AVAILABLE”, WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, completeness, currency, non-infringement, uninterrupted operation, or freedom from error or harmful components.
+
+Map data is derived from third-party sources (including OpenStreetMap) and may contain inaccuracies, omissions, or outdated information. The Service must not be used for navigation, routing, emergency services, public-safety, life-critical, medical, aviation, maritime, or any decision-making where errors could lead to loss of life, personal injury, environmental damage, or material financial loss.
+
+§ 15Limitation of liability
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, in no event shall the Provider, its affiliates, officers, employees, agents, or licensors be liable for any indirect, incidental, special, consequential, exemplary, or punitive damages, or for any loss of profits, revenue, business, goodwill, data, or anticipated savings, arising out of or in connection with the Service or these Terms, even if we have been advised of the possibility of such damages.
+
+Our aggregate liability for any and all claims arising out of or relating to the Service or these Terms shall not exceed EUR 100 (one hundred euros).
+
+Nothing in these Terms excludes or limits liability for: (i) gross negligence or wilful misconduct; (ii) death or personal injury caused by negligence; (iii) fraud or fraudulent misrepresentation; (iv) any other liability that cannot lawfully be excluded or limited under Austrian or EU consumer-protection law.
+
+§ 16Indemnification
+
+You agree to defend, indemnify, and hold harmless the Provider, its affiliates, and their respective officers, employees, and agents from and against any and all claims, damages, liabilities, costs, and expenses (including reasonable legal fees) arising out of or related to:
+
+(a)
+your use of, or inability to use, the Service;
+
+(b)
+your breach of these Terms or of any law or third-party right;
+
+(c)
+the content, operation, or compliance of your Application;
+
+(d)
+any claim by an End User against us in connection with your Application.
+
+§ 17Changes to the Service and to these Terms
+
+We may modify the Service, the available endpoints, the rate limits, the eligibility thresholds, or these Terms at any time. Material changes to these Terms will be announced on maptoolkit.org with a reasonable lead time (typically 30 days) before they take effect. Your continued use of the Service after the effective date of a change constitutes acceptance of the revised Terms. If you do not accept a change, your sole remedy is to cease using the Service.
+
+We will keep a dated changelog of these Terms publicly accessible.
+
+§ 18Governing law and jurisdiction
+
+These Terms, and any dispute arising out of or in connection with them or the Service, are governed by the laws of the Republic of Austria, excluding its conflict-of-laws rules and excluding the UN Convention on Contracts for the International Sale of Goods (CISG).
+
+The courts competent for the 1st district of Vienna, Austria shall have exclusive jurisdiction over any dispute arising out of or in connection with these Terms or the Service, subject to mandatory consumer-protection provisions that may grant consumers a different competent forum.
+
+Nothing in this Section limits any mandatory rights you may have as a consumer under Austrian or EU law.
+
+§ 19Miscellaneous
+
+Entire agreement
+
+These Terms (together with documents they reference) constitute the entire agreement between you and us regarding the Community License and supersede all prior or contemporaneous agreements on that subject.
+
+Severability
+
+If any provision of these Terms is held invalid or unenforceable, the remaining provisions remain in full force, and the invalid provision shall be replaced by a valid one that most closely reflects the original intent.
+
+No waiver
+
+Our failure to enforce any provision is not a waiver of our right to do so later.
+
+Assignment
+
+You may not assign or transfer your rights under these Terms without our prior written consent. We may assign these Terms to an affiliate or to a successor in connection with a merger, acquisition, or sale of assets.
+
+No partnership
+
+Nothing in these Terms creates a partnership, joint venture, agency, employment, or franchise relationship between you and us.
+
+Notices
+
+Notices to us must be sent in writing to the address in Section 1. Notices to you may be given by posting on maptoolkit.org or by any other reasonable means.
+
+Language
+
+These Terms are published in English. Any translation is provided for convenience only; in case of conflict, the English version prevails.
+
+§ 20Contact
+
+Questions about these Terms, eligibility, attribution, or rate limits:
+
+Toursprung GmbH
+
+Mariahilfer Straße 93/20, 1060 Vienna, Austria
+
+Email: [email protected]
+
+Web: https://www.maptoolkit.com/imprint/
+
+ Maptoolkit.org Community License · Terms of Service · Last updated 1 July 2026 · Effective 1 July 2026.
+
+Map styles
+
+ Outdoor maps
+ Hiking maps
+ Cycling maps
+ 3D terrain and buildings
+ Ski and winter maps
+ Custom map styles
+
+Compare alternatives
+
+ All Maptoolkit.org alternatives
+ OpenFreeMap vs. Maptoolkit
+ Protomaps vs. Maptoolkit
+ OpenMapTiles vs. Maptoolkit
+ VersaTiles vs. Maptoolkit
+
+APIs (Enterprise)
+
+ Vector Tiles
+ Raster Tiles
+ Static Maps
+ Printmaps
+ Routing
+ Map Matching
+ Isochrone
+ Connectors
+ Enhancement
+ Elevation
+ Weather
+ Geocoding
+
+Maptoolkit.org is a sister product of the Maptoolkit Enterprise License. Made with ❤️ in Vienna, Austria and Constance, Germany. For the people who build map applications for everyone else.
+
+ Terms of Use
+ Privacy
+ Attribution
+ Imprint / Contact
+
+ © Maptoolkit - Mariahilfer Str. 93/20, 1060 Vienna · Constance
+
+ We ♥
+ OSM
+ and are proud members of the
+ OpenStreetMap Foundation
+ + contributors of
+ MapLibre.
