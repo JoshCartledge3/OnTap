@@ -9,7 +9,8 @@ import {useLocation, usePubs, useTheme} from '../../hooks';
 import UserLocationMarker from './UserLocationMarker';
 import type {MapBounds} from '../../types/MapBounds';
 import {pubMarkerPointerX} from './mapStyles';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import type {MapStyleOption} from "../../types/MapStyleOption";
+import {getMapStyle} from "../../theme/mapStyles";
 
 export type PubMapHandle = {
     recenter: () => void;
@@ -17,11 +18,11 @@ export type PubMapHandle = {
 
 type Props = {
     ref?: Ref<PubMapHandle>;
+    mapStyle?: MapStyleOption;
 }
 
-export default function PubMap({ref}: Props) {
-    const {mapTheme} = useTheme();
-    const insets = useSafeAreaInsets();
+export default function PubMap({ref, mapStyle = 'ontap'}: Props) {
+    const {mapTheme, colorScheme} = useTheme();
     //#region Location
 
     const {startLiveUserLocationAsync, liveLocation} = useLocation();
@@ -64,9 +65,13 @@ export default function PubMap({ref}: Props) {
         await getPubsInBoundsAsync(event.nativeEvent.bounds);
     }
 
-    useImperativeHandle(ref, () => ({
-        recenter: onRecenter,
-    }));
+    function onMapStyleChanged() {
+        void cameraRef.current?.setStop({
+            pitch: 0,
+            duration: 300,
+            easing: 'ease',
+        });
+    }
 
     async function onRecenter() {
         if (!mapLoaded || !liveLocation) return;
@@ -83,6 +88,10 @@ export default function PubMap({ref}: Props) {
             duration: 500,
         });
     }
+
+    useImperativeHandle(ref, () => ({
+        recenter: onRecenter,
+    }));
 
     //#endregion
     //#region Pubs
@@ -104,10 +113,11 @@ export default function PubMap({ref}: Props) {
             <Map
                 ref={mapRef}
                 style={StyleSheet.absoluteFill}
-                mapStyle={mapTheme}
-                // mapStyle="https://styles.maptoolkit.org/hiking.json"
+                mapStyle={getMapStyle(mapStyle, mapTheme, colorScheme)}
                 logo={false}
                 attribution={false}
+                touchPitch={mapStyle !== 'topographic'}
+                onDidFinishLoadingStyle={onMapStyleChanged}
                 onDidFinishLoadingMap={() => {
                     void onMapLoaded().catch(() => {
                         // Need to catch, but do nothing.
@@ -175,5 +185,5 @@ export default function PubMap({ref}: Props) {
 const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFill,
-    }
+    },
 });

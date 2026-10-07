@@ -2,14 +2,18 @@ import {useTheme} from "../../hooks";
 import {Pressable} from "react-native";
 import {GlassSurface} from "../layout/GlassSurface";
 import {LayersIcon} from "lucide-react-native";
-import {mapStyles} from "./mapStyles";
+import {mapStyles} from "../map/mapStyles";
 
-export function MapLayers() {
+type Props = {
+    onPress: () => void;
+}
 
+export function SwitchMapStyleButton({onPress}: Props) {
     const {colors} = useTheme();
 
     return (
         <Pressable
+            onPress={onPress}
             accessibilityRole={"button"}
             accessibilityLabel={"Show map layers"}>
             <GlassSurface style={mapStyles.mapIconButtonRound} interactive>

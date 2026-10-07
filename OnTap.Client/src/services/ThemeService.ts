@@ -8,10 +8,10 @@ export const themeService = {
     resolveTheme,
 };
 
-function resolveTheme(deviceTheme: 'light' | 'dark' | null): Theme & { mapTheme: StyleSpecification } {
+function resolveTheme(deviceTheme: 'light' | 'dark' | null): Theme & { mapTheme: StyleSpecification; colorScheme: 'light' | 'dark' } {
     if (deviceTheme === 'dark') {
-        return { ...darkTheme, mapTheme: darkMapTheme as StyleSpecification };
+        return { ...darkTheme, mapTheme: darkMapTheme as StyleSpecification, colorScheme: 'dark' };
     }
 
-    return { ...lightTheme, mapTheme: lightMapTheme as StyleSpecification };
+    return { ...lightTheme, mapTheme: lightMapTheme as StyleSpecification, colorScheme: 'light' };
 }

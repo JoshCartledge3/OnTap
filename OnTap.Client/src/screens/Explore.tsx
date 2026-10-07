@@ -2,22 +2,32 @@ import { StyleSheet, View } from 'react-native';
 import PubMap from '../components/map/PubMap';
 import {SafeAreaView} from "react-native-safe-area-context";
 import type { PubMapHandle } from '../components/map/PubMap';
-import {Recenter} from "../components/map/Recenter";
-import {useRef} from "react";
-import {MapLayers} from "../components/map/MapLayers";
+import {RecenterButton} from "../components/explore/RecenterButton";
+import {useRef, useState} from "react";
+import {SwitchMapStyleButton} from "../components/explore/SwitchMapStyleButton";
+import {MapStylePicker} from "../components/explore/MapStylePicker";
+import type {MapStyleOption} from "../types/MapStyleOption";
 
 export default function Explore() {
     const mapRef = useRef<PubMapHandle>(null);
+    const [showMapStylePicker, setShowMapStylePicker] = useState(false);
+    const [selectedMapStyle, setSelectedMapStyle] = useState<MapStyleOption>('ontap');
 
     return (
         <View style={styles.container}>
-            <PubMap ref={mapRef}/>
+            <PubMap ref={mapRef} mapStyle={selectedMapStyle}/>
             <SafeAreaView pointerEvents="box-none" style={styles.overlay}>
                 <View style={styles.controls}>
-                    <Recenter onRecenter={() => mapRef.current?.recenter()}/>
-                    <MapLayers/>
+                    <RecenterButton onRecenter={() => mapRef.current?.recenter()}/>
+                    <SwitchMapStyleButton onPress={() => setShowMapStylePicker(true)}/>
                 </View>
             </SafeAreaView>
+            <MapStylePicker
+                visible={showMapStylePicker}
+                onClose={() => setShowMapStylePicker(false)}
+                selectedStyle={selectedMapStyle}
+                onSelect={setSelectedMapStyle}
+            />
         </View>
     );
 }
