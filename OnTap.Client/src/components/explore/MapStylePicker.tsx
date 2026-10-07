@@ -90,7 +90,7 @@ export function MapStylePicker({visible, onClose, selectedStyle, onSelect}: Prop
                         transform: [{
                             translateY: animationProgress.interpolate({
                                 inputRange: [0, 1],
-                                outputRange: [(sheetHeight || windowHeight) + 12, 0],
+                                outputRange: [(sheetHeight || windowHeight) + 16, 0],
                             }),
                         }],
                     }}
@@ -194,6 +194,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'flex-end',
         padding: 12,
+        paddingBottom: 16,
     },
     backdrop: {
         ...StyleSheet.absoluteFill,
