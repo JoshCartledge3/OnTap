@@ -13,7 +13,7 @@ export function AppText({ variant = 'regular', weight = 'regular', italic = fals
     const { colors } = useTheme();
     const fontStyle = italic ? 'italic' : 'normal';
     const font: TextStyle = Platform.OS === 'ios'
-        ? { fontFamily: iosFontFaces[weight][fontStyle] }
+        ? { fontFamily: iosFontFaces[weight][fontStyle], fontStyle }
         : { fontFamily, fontWeight: fontWeights[weight], fontStyle };
 
     return (

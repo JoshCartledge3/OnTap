@@ -1,20 +1,30 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
+import {Ref, useEffect, useImperativeHandle, useMemo, useRef, useState} from 'react';
 import {StyleSheet, View} from 'react-native';
 import type {NativeSyntheticEvent} from 'react-native';
 import {Camera, Marker, Map} from '@maplibre/maplibre-react-native';
-import type { CameraRef, MapRef, ViewStateChangeEvent } from '@maplibre/maplibre-react-native';
+import type {CameraRef, MapRef, ViewStateChangeEvent} from '@maplibre/maplibre-react-native';
 import {PubMarker} from './PubMarker';
 import {PubCluster} from "./PubCluster";
-import { useLocation, usePubs, useTheme } from '../../hooks';
+import {useLocation, usePubs, useTheme} from '../../hooks';
 import UserLocationMarker from './UserLocationMarker';
-import type { MapBounds } from '../../types/MapBounds';
-import { pubMarkerPointerX } from './mapStyles';
+import type {MapBounds} from '../../types/MapBounds';
+import {pubMarkerPointerX} from './mapStyles';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
-export default function PubMap() {
-    const { mapTheme } = useTheme();
+export type PubMapHandle = {
+    recenter: () => void;
+}
+
+type Props = {
+    ref?: Ref<PubMapHandle>;
+}
+
+export default function PubMap({ref}: Props) {
+    const {mapTheme} = useTheme();
+    const insets = useSafeAreaInsets();
     //#region Location
 
-    const { startLiveUserLocationAsync, liveLocation } = useLocation();
+    const {startLiveUserLocationAsync, liveLocation} = useLocation();
     const mapRef = useRef<MapRef>(null);
     const [mapLoaded, setMapLoaded] = useState(false);
     const longitude = liveLocation?.longitude;
@@ -44,20 +54,48 @@ export default function PubMap() {
             mapRef.current?.getZoom(),
         ]);
         if (bounds) {
-            setMapView({ bounds, zoom: zoom ?? 15 });
+            setMapView({bounds, zoom: zoom ?? 15});
             await getPubsInBoundsAsync(bounds);
         }
     }
 
     async function onMapBoundsChanged(event: NativeSyntheticEvent<ViewStateChangeEvent>) {
-        setMapView({ bounds: event.nativeEvent.bounds, zoom: event.nativeEvent.zoom });
+        setMapView({bounds: event.nativeEvent.bounds, zoom: event.nativeEvent.zoom});
         await getPubsInBoundsAsync(event.nativeEvent.bounds);
+    }
+
+    useImperativeHandle(ref, () => ({
+        recenter: onRecenter,
+    }));
+
+    async function onRecenter() {
+        if (!mapLoaded || !liveLocation) return;
+
+        await cameraRef.current?.setStop({
+            pitch: 0,
+            duration: 0,
+        });
+
+        cameraRef.current?.flyTo({
+            center: [liveLocation.longitude, liveLocation.latitude],
+            zoom: 15,
+            bearing: 0,
+            duration: 500,
+        });
     }
 
     //#endregion
     //#region Pubs
 
     const {mapPoints, getClusterExpansionZoom, getPubsInBoundsAsync} = usePubs(mapView?.bounds, mapView?.zoom);
+
+    function onPubPressed(pubId: string, lngLat: [number, number]) {
+        setSelectedPubId(pubId);
+        cameraRef.current?.easeTo({
+            center: lngLat,
+            duration: 500,
+        });
+    }
 
     //#endregion
 
@@ -67,6 +105,7 @@ export default function PubMap() {
                 ref={mapRef}
                 style={StyleSheet.absoluteFill}
                 mapStyle={mapTheme}
+                // mapStyle="https://styles.maptoolkit.org/hiking.json"
                 logo={false}
                 attribution={false}
                 onDidFinishLoadingMap={() => {
@@ -83,6 +122,7 @@ export default function PubMap() {
                     ref={cameraRef}
                     center={cameraCenter}
                     zoom={15}
+                    bearing={0}
                     duration={1500}
                     easing="ease"/>
                 {mapPoints.map(point => {
@@ -105,7 +145,7 @@ export default function PubMap() {
                                     duration: 500,
                                 })}
                             >
-                                <PubCluster count={properties.point_count} />
+                                <PubCluster count={properties.point_count}/>
                             </Marker>
                         );
                     }
@@ -118,9 +158,9 @@ export default function PubMap() {
                             lngLat={lngLat}
                             anchor="bottom-left"
                             offset={[-pubMarkerPointerX, 0]}
-                            onPress={() => setSelectedPubId(pubId)}
+                            onPress={() => onPubPressed(pubId, lngLat)}
                         >
-                            <PubMarker rating={properties.rating} active={selectedPubId === pubId} />
+                            <PubMarker rating={properties.rating} active={selectedPubId === pubId}/>
                         </Marker>
                     );
                 })}
@@ -135,5 +175,5 @@ export default function PubMap() {
 const styles = StyleSheet.create({
     container: {
         ...StyleSheet.absoluteFill,
-    },
+    }
 });
