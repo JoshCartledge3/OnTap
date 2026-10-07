@@ -1,6 +1,6 @@
 import Svg, { G, Path, Line, Text } from 'react-native-svg';
 import { useTheme } from '../../hooks';
-import { createMapStyles, pubMarkerScale } from './mapStyles';
+import { createThemedMapStyles, pubMarkerScale } from './mapStyles';
 
 type Props = {
     label?: string;
@@ -11,7 +11,7 @@ type Props = {
 
 export function PubMarkerArtwork({ label, active = false, rating = false, accessibilityLabel }: Props) {
     const { colors } = useTheme();
-    const styles = createMapStyles(colors, active);
+    const styles = createThemedMapStyles(colors, active);
     const fontSize = 64;
     const labelX = rating ? 272 : 188;
     // Numeric glyph advances in Arial; the decimal is narrower than a digit.
