@@ -2232,9 +2232,9 @@
             "zoom"
           ],
           11,
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           14,
-          "rgba(6, 31, 19, 1)"
+          "rgba(34, 43, 39, 1)"
         ]
       },
       "metadata": {
@@ -2266,10 +2266,11 @@
           5,
           0.1
         ],
-        "raster-saturation": -0.8,
-        "raster-brightness-min": 0,
-        "raster-brightness-max": 0.15,
-        "raster-hue-rotate": -14
+        "raster-saturation": -0.85,
+        "raster-brightness-min": 0.08,
+        "raster-brightness-max": 0.42,
+        "raster-hue-rotate": 0,
+        "raster-contrast": 0.2
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -2296,7 +2297,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(4, 25, 14, 1)"
+        "fill-color": "rgba(27, 70, 96, 1)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -2325,21 +2326,21 @@
             "elevation"
           ],
           -12000,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           -1000,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           -500,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           -250,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           -100,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           -30,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           -0.1,
-          "rgba(4, 25, 14, 1)",
+          "rgba(27, 70, 96, 1)",
           0,
-          "rgba(4, 25, 14, 0)"
+          "rgba(27, 70, 96, 0)"
         ]
       },
       "metadata": {
@@ -2376,13 +2377,13 @@
             "zoom"
           ],
           4,
-          "rgba(6, 31, 19, 0)",
+          "rgba(34, 43, 39, 0)",
           5,
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           11,
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           14,
-          "rgba(6, 31, 19, 1)"
+          "rgba(34, 43, 39, 1)"
         ]
       },
       "metadata": {
@@ -2419,24 +2420,24 @@
               "type"
             ],
             "quarry",
-            "rgba(6, 31, 19, 0)",
+            "rgba(81, 73, 60, 0)",
             [
               "park",
               "cemetery"
             ],
-            "rgba(6, 31, 19, 0)",
+            "rgba(46, 73, 61, 0)",
             "parking",
-            "rgba(6, 31, 19, 0)",
+            "rgba(56, 66, 74, 0)",
             [
               "school",
               "hospital"
             ],
-            "rgba(6, 31, 19, 0)",
+            "rgba(55, 55, 71, 0)",
             "pitch",
-            "rgba(6, 31, 19, 0)",
+            "rgba(59, 89, 69, 0)",
             "flowerbed",
-            "rgba(6, 31, 19, 0)",
-            "rgba(6, 31, 19, 0)"
+            "rgba(53, 75, 61, 0)",
+            "rgba(34, 43, 39, 0)"
           ],
           5,
           [
@@ -2446,24 +2447,24 @@
               "type"
             ],
             "quarry",
-            "rgba(6, 31, 19, 1)",
+            "rgba(81, 73, 60, 1)",
             [
               "park",
               "cemetery"
             ],
-            "rgba(6, 31, 19, 1)",
+            "rgba(46, 73, 61, 1)",
             "parking",
-            "rgba(6, 31, 19, 1)",
+            "rgba(56, 66, 74, 1)",
             [
               "school",
               "hospital"
             ],
-            "rgba(6, 31, 19, 1)",
+            "rgba(55, 55, 71, 1)",
             "pitch",
-            "rgba(6, 31, 19, 1)",
+            "rgba(59, 89, 69, 1)",
             "flowerbed",
-            "rgba(6, 31, 19, 1)",
-            "rgba(6, 31, 19, 1)"
+            "rgba(53, 75, 61, 1)",
+            "rgba(34, 43, 39, 1)"
           ],
           14.5,
           [
@@ -2473,24 +2474,24 @@
               "type"
             ],
             "quarry",
-            "rgba(6, 31, 19, 1)",
+            "rgba(81, 73, 60, 1)",
             [
               "park",
               "cemetery"
             ],
-            "rgba(6, 31, 19, 1)",
+            "rgba(46, 73, 61, 1)",
             "parking",
-            "rgba(6, 31, 19, 1)",
+            "rgba(56, 66, 74, 1)",
             [
               "school",
               "hospital"
             ],
-            "rgba(6, 31, 19, 1)",
+            "rgba(55, 55, 71, 1)",
             "pitch",
-            "rgba(6, 31, 19, 1)",
+            "rgba(59, 89, 69, 1)",
             "flowerbed",
-            "rgba(6, 31, 19, 1)",
-            "rgba(6, 31, 19, 1)"
+            "rgba(53, 75, 61, 1)",
+            "rgba(34, 43, 39, 1)"
           ]
         ]
       },
@@ -2554,9 +2555,9 @@
             "zoom"
           ],
           5,
-          "rgba(6, 31, 19, 1)",
+          "rgba(56, 66, 74, 1)",
           14.5,
-          "rgba(6, 31, 19, 1)"
+          "rgba(56, 66, 74, 1)"
         ]
       },
       "metadata": {
@@ -2625,27 +2626,27 @@
               "type"
             ],
             "wood",
-            "rgba(17, 52, 33, 0)",
+            "rgba(41, 67, 51, 0)",
             "farmland",
-            "rgba(6, 31, 19, 0)",
+            "rgba(58, 65, 45, 0)",
             [
               "wetland",
               "tidalflat"
             ],
-            "rgba(17, 52, 33, 0)",
+            "rgba(46, 77, 75, 0)",
             "rock",
-            "rgba(6, 31, 19, 0)",
+            "rgba(71, 77, 73, 0)",
             "sand",
-            "rgba(29, 56, 39, 0)",
+            "rgba(81, 73, 60, 0)",
             "scrub",
-            "rgba(17, 52, 33, 0)",
+            "rgba(53, 75, 61, 0)",
             "fell",
-            "rgba(6, 31, 19, 0)",
+            "rgba(58, 68, 49, 0)",
             "ice",
-            "rgba(62, 117, 103, 0)",
+            "rgba(86, 109, 125, 0)",
             "salt_desert",
-            "rgba(62, 117, 103, 0)",
-            "rgba(17, 52, 33, 0)"
+            "rgba(94, 91, 75, 0)",
+            "rgba(41, 67, 51, 0)"
           ],
           5,
           [
@@ -2655,27 +2656,27 @@
               "type"
             ],
             "wood",
-            "rgba(17, 52, 33, 1)",
+            "rgba(41, 67, 51, 1)",
             "farmland",
-            "rgba(6, 31, 19, 1)",
+            "rgba(58, 65, 45, 1)",
             [
               "wetland",
               "tidalflat"
             ],
-            "rgba(17, 52, 33, 1)",
+            "rgba(46, 77, 75, 1)",
             "rock",
-            "rgba(6, 31, 19, 1)",
+            "rgba(71, 77, 73, 1)",
             "sand",
-            "rgba(29, 56, 39, 1)",
+            "rgba(81, 73, 60, 1)",
             "scrub",
-            "rgba(17, 52, 33, 1)",
+            "rgba(53, 75, 61, 1)",
             "fell",
-            "rgba(6, 31, 19, 1)",
+            "rgba(58, 68, 49, 1)",
             "ice",
-            "rgba(62, 117, 103, 1)",
+            "rgba(86, 109, 125, 1)",
             "salt_desert",
-            "rgba(62, 117, 103, 1)",
-            "rgba(17, 52, 33, 1)"
+            "rgba(94, 91, 75, 1)",
+            "rgba(41, 67, 51, 1)"
           ],
           12,
           [
@@ -2685,27 +2686,27 @@
               "type"
             ],
             "wood",
-            "rgba(17, 52, 33, 1)",
+            "rgba(41, 67, 51, 1)",
             "farmland",
-            "rgba(6, 31, 19, 1)",
+            "rgba(58, 65, 45, 1)",
             [
               "wetland",
               "tidalflat"
             ],
-            "rgba(17, 52, 33, 1)",
+            "rgba(46, 77, 75, 1)",
             "rock",
-            "rgba(6, 31, 19, 1)",
+            "rgba(71, 77, 73, 1)",
             "sand",
-            "rgba(29, 56, 39, 1)",
+            "rgba(81, 73, 60, 1)",
             "scrub",
-            "rgba(17, 52, 33, 1)",
+            "rgba(53, 75, 61, 1)",
             "fell",
-            "rgba(6, 31, 19, 1)",
+            "rgba(58, 68, 49, 1)",
             "ice",
-            "rgba(62, 117, 103, 1)",
+            "rgba(86, 109, 125, 1)",
             "salt_desert",
-            "rgba(62, 117, 103, 1)",
-            "rgba(17, 52, 33, 1)"
+            "rgba(94, 91, 75, 1)",
+            "rgba(41, 67, 51, 1)"
           ]
         ]
       },
@@ -2752,7 +2753,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(4, 25, 14, 0.7)"
+        "fill-color": "rgba(27, 70, 96, 0.7)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -3114,7 +3115,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(6, 31, 19, 0.5)",
+        "line-color": "rgba(34, 43, 39, 0.5)",
         "line-width": [
           "interpolate",
           [
@@ -3383,8 +3384,8 @@
             "terrain_type"
           ],
           "glacier",
-          "#3E7567",
-          "#A4B7A9"
+          "#566D7D",
+          "#A8B1AA"
         ],
         "line-width": [
           "interpolate",
@@ -3527,7 +3528,7 @@
           16,
           0.3
         ],
-        "hillshade-shadow-color": "rgba(0, 10, 5, 0.65)",
+        "hillshade-shadow-color": "rgba(14, 22, 20, 0.65)",
         "hillshade-accent-color": "rgba(0, 0, 0, 0)",
         "hillshade-highlight-color": "rgba(0, 0, 0, 0)"
       },
@@ -3560,7 +3561,7 @@
           16,
           0.3
         ],
-        "hillshade-shadow-color": "rgba(0, 10, 5, 0.65)",
+        "hillshade-shadow-color": "rgba(14, 22, 20, 0.65)",
         "hillshade-accent-color": "rgba(0, 0, 0, 0)",
         "hillshade-highlight-color": "rgba(0, 0, 0, 0)"
       },
@@ -3593,7 +3594,7 @@
           16,
           0.3
         ],
-        "hillshade-shadow-color": "rgba(0, 10, 5, 0.65)",
+        "hillshade-shadow-color": "rgba(14, 22, 20, 0.65)",
         "hillshade-accent-color": "rgba(0, 0, 0, 0)",
         "hillshade-highlight-color": "rgba(0, 0, 0, 0)"
       },
@@ -3614,9 +3615,9 @@
       "type": "hillshade",
       "paint": {
         "hillshade-illumination-anchor": "viewport",
-        "hillshade-accent-color": "rgba(2, 18, 11, 0.35)",
-        "hillshade-shadow-color": "rgba(0, 10, 5, 0.65)",
-        "hillshade-highlight-color": "rgba(164, 183, 169, 0.22)",
+        "hillshade-accent-color": "rgba(24, 32, 28, 0.2)",
+        "hillshade-shadow-color": "rgba(8, 16, 13, 0.75)",
+        "hillshade-highlight-color": "rgba(220, 227, 216, 0.65)",
         "hillshade-illumination-direction": 315,
         "hillshade-exaggeration": [
           "interpolate",
@@ -3626,14 +3627,16 @@
           [
             "zoom"
           ],
+          0,
+          0.5,
           6,
-          0.16,
+          0.3,
           12,
-          0.24,
+          0.32,
           15,
-          0.44,
+          0.5,
           18,
-          0.26
+          0.32
         ]
       },
       "layout": {
@@ -3686,7 +3689,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(62, 117, 103, 1)",
+        "line-color": "rgba(52, 115, 150, 1)",
         "line-width": [
           "interpolate",
           [
@@ -3767,7 +3770,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(62, 117, 103, 1)",
+        "line-color": "rgba(52, 115, 150, 1)",
         "line-width": [
           "interpolate",
           [
@@ -3883,10 +3886,10 @@
               "type"
             ],
             "aboriginal_lands",
-            "rgba(164, 183, 169, 1)",
+            "rgba(109, 113, 132, 1)",
             "military",
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(109, 113, 132, 1)",
+            "rgba(109, 113, 132, 1)"
           ],
           10,
           [
@@ -3896,10 +3899,10 @@
               "type"
             ],
             "aboriginal_lands",
-            "rgba(164, 183, 169, 1)",
+            "rgba(109, 113, 132, 1)",
             "military",
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(109, 113, 132, 1)",
+            "rgba(109, 113, 132, 1)"
           ]
         ],
         "line-width": [
@@ -4006,7 +4009,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(4, 25, 14, 1)"
+        "fill-color": "rgba(27, 70, 96, 1)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -4045,7 +4048,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(62, 117, 103, 1)",
+        "line-color": "rgba(52, 115, 150, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4122,7 +4125,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(4, 25, 14, 1)"
+        "fill-color": "rgba(27, 70, 96, 1)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -4316,7 +4319,7 @@
           13,
           0.5
         ],
-        "line-color": "rgba(164, 183, 169, 1)",
+        "line-color": "rgba(109, 113, 132, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4410,7 +4413,7 @@
           13,
           0.5
         ],
-        "line-color": "rgba(164, 183, 169, 1)",
+        "line-color": "rgba(109, 113, 132, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4504,7 +4507,7 @@
           13,
           0.5
         ],
-        "line-color": "rgba(164, 183, 169, 1)",
+        "line-color": "rgba(109, 113, 132, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4588,10 +4591,10 @@
               "type"
             ],
             "aboriginal_lands",
-            "rgba(164, 183, 169, 0.5)",
+            "rgba(109, 113, 132, 0.5)",
             "military",
-            "rgba(164, 183, 169, 0.5)",
-            "rgba(164, 183, 169, 0.5)"
+            "rgba(109, 113, 132, 0.5)",
+            "rgba(109, 113, 132, 0.5)"
           ],
           10,
           [
@@ -4601,10 +4604,10 @@
               "type"
             ],
             "aboriginal_lands",
-            "rgba(164, 183, 169, 0.6)",
+            "rgba(109, 113, 132, 0.6)",
             "military",
-            "rgba(164, 183, 169, 0.5)",
-            "rgba(164, 183, 169, 0.6)"
+            "rgba(109, 113, 132, 0.5)",
+            "rgba(109, 113, 132, 0.6)"
           ]
         ],
         "line-width": [
@@ -4698,7 +4701,7 @@
           1,
           0
         ],
-        "line-color": "rgba(164, 183, 169, 1)",
+        "line-color": "rgba(109, 113, 132, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4766,7 +4769,7 @@
           1,
           0
         ],
-        "line-color": "rgba(164, 183, 169, 1)",
+        "line-color": "rgba(109, 113, 132, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4830,7 +4833,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(164, 183, 169, 1)",
+        "line-color": "rgba(109, 113, 132, 1)",
         "line-dasharray": [
           1,
           3
@@ -4917,7 +4920,7 @@
           17,
           0.3
         ],
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -4988,7 +4991,7 @@
           17,
           0.3
         ],
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -5087,7 +5090,7 @@
           17,
           0.3
         ],
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -5142,7 +5145,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(29, 56, 39, 1)"
+        "fill-color": "rgba(58, 70, 80, 1)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -5169,7 +5172,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(29, 56, 39, 1)"
+        "fill-color": "rgba(58, 70, 80, 1)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -5241,7 +5244,7 @@
           5.88
         ],
         "line-opacity": 0.5,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -5362,7 +5365,7 @@
             "zoom"
           ],
           12,
-          "rgba(35, 69, 50, 1)",
+          "rgba(24, 32, 39, 1)",
           14,
           [
             "match",
@@ -5375,8 +5378,8 @@
               "minor",
               "service"
             ],
-            "rgba(35, 69, 50, 1)",
-            "rgba(35, 69, 50, 1)"
+            "rgba(24, 32, 39, 1)",
+            "rgba(24, 32, 39, 1)"
           ]
         ],
         "line-width": [
@@ -5541,9 +5544,9 @@
             "zoom"
           ],
           12,
-          "rgba(35, 69, 50, 1)",
+          "rgba(24, 32, 39, 1)",
           14,
-          "rgba(35, 69, 50, 1)"
+          "rgba(24, 32, 39, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -5936,9 +5939,9 @@
             "zoom"
           ],
           13,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -6044,7 +6047,7 @@
           ]
         ],
         "line-opacity": 0.5,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -6200,7 +6203,7 @@
           ]
         ],
         "line-opacity": 0.5,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -6336,9 +6339,9 @@
             "zoom"
           ],
           11,
-          "rgba(35, 69, 50, 0.2)",
+          "rgba(24, 32, 39, 0.2)",
           14,
-          "rgba(35, 69, 50, 0.7)"
+          "rgba(24, 32, 39, 0.7)"
         ],
         "line-gap-width": [
           "interpolate",
@@ -6453,9 +6456,9 @@
             "zoom"
           ],
           10,
-          "rgba(35, 69, 50, 0.2)",
+          "rgba(24, 32, 39, 0.2)",
           13,
-          "rgba(35, 69, 50, 0.7)"
+          "rgba(24, 32, 39, 0.7)"
         ],
         "line-gap-width": [
           "interpolate",
@@ -6593,7 +6596,7 @@
             "zoom"
           ],
           6,
-          "rgba(164, 183, 169, 1)",
+          "rgba(139, 140, 150, 1)",
           14,
           [
             "case",
@@ -6601,7 +6604,7 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "in",
               [
@@ -6616,8 +6619,8 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 0)",
+            "rgba(139, 140, 150, 1)"
           ],
           15,
           [
@@ -6638,13 +6641,13 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ],
           16,
           [
@@ -6653,8 +6656,8 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ]
         ],
         "line-width": [
@@ -6749,7 +6752,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(29, 56, 39, 1)",
+        "line-color": "rgba(58, 70, 80, 1)",
         "line-width": [
           "interpolate",
           [
@@ -6820,7 +6823,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(29, 56, 39, 1)",
+        "line-color": "rgba(58, 70, 80, 1)",
         "line-width": [
           "interpolate",
           [
@@ -6878,8 +6881,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(29, 56, 39, 0.5)",
-        "fill-outline-color": "rgba(29, 56, 39, 0.5)"
+        "fill-color": "rgba(58, 70, 80, 0.5)",
+        "fill-outline-color": "rgba(58, 70, 80, 0.5)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -6950,11 +6953,11 @@
             "zoom"
           ],
           13,
-          "rgba(35, 69, 50, 0)",
+          "rgba(24, 32, 39, 0)",
           15,
-          "rgba(35, 69, 50, 0.3)",
+          "rgba(24, 32, 39, 0.3)",
           16,
-          "rgba(35, 69, 50, 1)"
+          "rgba(24, 32, 39, 1)"
         ],
         "line-gap-width": [
           "interpolate",
@@ -7063,7 +7066,7 @@
             "zoom"
           ],
           5,
-          "rgba(35, 69, 50, 0.3)",
+          "rgba(24, 32, 39, 0.3)",
           9,
           [
             "match",
@@ -7072,13 +7075,13 @@
               "type"
             ],
             "motorway",
-            "rgba(35, 69, 50, 1)",
+            "rgba(24, 32, 39, 1)",
             [
               "trunk",
               "primary"
             ],
-            "rgba(35, 69, 50, 0.7)",
-            "rgba(35, 69, 50, 0)"
+            "rgba(24, 32, 39, 0.7)",
+            "rgba(24, 32, 39, 0)"
           ],
           10,
           [
@@ -7092,8 +7095,8 @@
               "trunk",
               "primary"
             ],
-            "rgba(35, 69, 50, 1)",
-            "rgba(35, 69, 50, 0)"
+            "rgba(24, 32, 39, 1)",
+            "rgba(24, 32, 39, 0)"
           ],
           13,
           [
@@ -7123,11 +7126,11 @@
                 ]
               ]
             ],
-            "rgba(35, 69, 50, 1)",
-            "rgba(35, 69, 50, 1)"
+            "rgba(24, 32, 39, 1)",
+            "rgba(24, 32, 39, 1)"
           ],
           16,
-          "rgba(35, 69, 50, 1)"
+          "rgba(24, 32, 39, 1)"
         ],
         "line-gap-width": [
           "interpolate",
@@ -7249,7 +7252,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "line-color": "rgba(59, 96, 72, 1)",
+        "line-color": "rgba(101, 113, 122, 1)",
         "line-dasharray": [
           2,
           3
@@ -7316,7 +7319,7 @@
             "zoom"
           ],
           13,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           14,
           [
             "case",
@@ -7324,8 +7327,8 @@
               "has",
               "urban"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(197, 205, 210, 1)",
+            "rgba(197, 205, 210, 1)"
           ]
         ],
         "line-dasharray": [
@@ -7408,11 +7411,11 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-dasharray": [
           6,
@@ -7495,11 +7498,11 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-dasharray": [
           2,
@@ -7584,11 +7587,11 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -7713,9 +7716,9 @@
             "zoom"
           ],
           13,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -7796,7 +7799,7 @@
             "zoom"
           ],
           10,
-          "rgba(59, 96, 72, 0)",
+          "rgba(101, 113, 122, 0)",
           11,
           [
             "case",
@@ -7808,8 +7811,8 @@
               ],
               "runway"
             ],
-            "rgba(59, 96, 72, 1)",
-            "rgba(59, 96, 72, 0)"
+            "rgba(101, 113, 122, 1)",
+            "rgba(101, 113, 122, 0)"
           ],
           12,
           [
@@ -7828,7 +7831,7 @@
                 ]
               ]
             ],
-            "rgba(59, 96, 72, 1)",
+            "rgba(101, 113, 122, 1)",
             [
               "in",
               [
@@ -7845,8 +7848,8 @@
                 ]
               ]
             ],
-            "rgba(59, 96, 72, 1)",
-            "rgba(59, 96, 72, 0.7)"
+            "rgba(101, 113, 122, 1)",
+            "rgba(101, 113, 122, 0.7)"
           ]
         ],
         "line-width": [
@@ -8024,7 +8027,7 @@
             "zoom"
           ],
           9,
-          "rgba(59, 96, 72, 0)",
+          "rgba(138, 149, 158, 0)",
           9.5,
           [
             "match",
@@ -8033,11 +8036,11 @@
               "type"
             ],
             "secondary",
-            "rgba(59, 96, 72, 1)",
-            "rgba(59, 96, 72, 0)"
+            "rgba(138, 149, 158, 1)",
+            "rgba(138, 149, 158, 0)"
           ],
           10.5,
-          "rgba(59, 96, 72, 1)"
+          "rgba(138, 149, 158, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -8183,7 +8186,7 @@
             "zoom"
           ],
           4,
-          "rgba(59, 96, 72, 0)",
+          "rgba(196, 173, 128, 0)",
           6,
           [
             "match",
@@ -8195,11 +8198,11 @@
               "primary",
               "trunk"
             ],
-            "rgba(59, 96, 72, 0)",
-            "rgba(59, 96, 72, 1)"
+            "rgba(196, 173, 128, 0)",
+            "rgba(196, 173, 128, 1)"
           ],
           7.5,
-          "rgba(59, 96, 72, 1)"
+          "rgba(196, 173, 128, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -8284,7 +8287,7 @@
             "zoom"
           ],
           6,
-          "rgba(164, 183, 169, 1)",
+          "rgba(139, 140, 150, 1)",
           14,
           [
             "case",
@@ -8292,7 +8295,7 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "in",
               [
@@ -8307,8 +8310,8 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 0)",
+            "rgba(139, 140, 150, 1)"
           ],
           15,
           [
@@ -8329,13 +8332,13 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ],
           16,
           [
@@ -8344,8 +8347,8 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ]
         ],
         "line-width": [
@@ -8458,13 +8461,13 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ],
           16,
           [
@@ -8473,8 +8476,8 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ]
         ],
         "line-dasharray": [
@@ -8627,8 +8630,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(59, 96, 72, 0.5)",
-        "fill-outline-color": "rgba(59, 96, 72, 0.5)"
+        "fill-color": "rgba(101, 113, 122, 0.5)",
+        "fill-outline-color": "rgba(101, 113, 122, 0.5)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -8663,15 +8666,15 @@
               "colour_index"
             ],
             0,
-            "rgba(29, 56, 39, 0.5)",
+            "rgba(58, 70, 80, 0.5)",
             5,
-            "rgba(29, 56, 39, 0.5)",
+            "rgba(58, 70, 80, 0.5)",
             10,
-            "rgba(29, 56, 39, 0.5)"
+            "rgba(58, 70, 80, 0.5)"
           ],
-          "rgba(29, 56, 39, 0.5)"
+          "rgba(58, 70, 80, 0.5)"
         ],
-        "fill-outline-color": "rgba(29, 56, 39, 0.5)"
+        "fill-outline-color": "rgba(81, 96, 106, 0.8)"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -8741,7 +8744,7 @@
           14.37
         ],
         "line-opacity": 0.5,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -8855,7 +8858,7 @@
           ]
         ],
         "line-opacity": 0.7,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -9011,7 +9014,7 @@
           ]
         ],
         "line-opacity": 0.7,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -9142,7 +9145,7 @@
           21.56
         ],
         "line-opacity": 0.5,
-        "line-color": "rgba(35, 69, 50, 1)",
+        "line-color": "rgba(24, 32, 39, 1)",
         "line-width": [
           "interpolate",
           [
@@ -9228,11 +9231,11 @@
             "zoom"
           ],
           13,
-          "rgba(35, 69, 50, 0)",
+          "rgba(24, 32, 39, 0)",
           15,
-          "rgba(35, 69, 50, 0.3)",
+          "rgba(24, 32, 39, 0.3)",
           16,
-          "rgba(35, 69, 50, 1)"
+          "rgba(24, 32, 39, 1)"
         ],
         "line-gap-width": [
           "interpolate",
@@ -9361,7 +9364,7 @@
             "zoom"
           ],
           7,
-          "rgba(35, 69, 50, 0.3)",
+          "rgba(24, 32, 39, 0.3)",
           9,
           [
             "match",
@@ -9370,13 +9373,13 @@
               "type"
             ],
             "motorway",
-            "rgba(35, 69, 50, 1)",
+            "rgba(24, 32, 39, 1)",
             [
               "trunk",
               "primary"
             ],
-            "rgba(35, 69, 50, 0.7)",
-            "rgba(35, 69, 50, 0)"
+            "rgba(24, 32, 39, 0.7)",
+            "rgba(24, 32, 39, 0)"
           ],
           10,
           [
@@ -9390,8 +9393,8 @@
               "trunk",
               "primary"
             ],
-            "rgba(35, 69, 50, 1)",
-            "rgba(35, 69, 50, 0)"
+            "rgba(24, 32, 39, 1)",
+            "rgba(24, 32, 39, 0)"
           ],
           13,
           [
@@ -9421,11 +9424,11 @@
                 ]
               ]
             ],
-            "rgba(35, 69, 50, 1)",
-            "rgba(35, 69, 50, 1)"
+            "rgba(24, 32, 39, 1)",
+            "rgba(24, 32, 39, 1)"
           ],
           16,
-          "rgba(35, 69, 50, 1)"
+          "rgba(24, 32, 39, 1)"
         ],
         "line-gap-width": [
           "interpolate",
@@ -9638,11 +9641,11 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -9756,9 +9759,9 @@
             "zoom"
           ],
           13,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           14,
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -9841,7 +9844,7 @@
             "zoom"
           ],
           10,
-          "rgba(59, 96, 72, 0)",
+          "rgba(101, 113, 122, 0)",
           11,
           [
             "case",
@@ -9853,8 +9856,8 @@
               ],
               "runway"
             ],
-            "rgba(59, 96, 72, 1)",
-            "rgba(59, 96, 72, 0)"
+            "rgba(101, 113, 122, 1)",
+            "rgba(101, 113, 122, 0)"
           ],
           12,
           [
@@ -9873,7 +9876,7 @@
                 ]
               ]
             ],
-            "rgba(59, 96, 72, 1)",
+            "rgba(101, 113, 122, 1)",
             [
               "in",
               [
@@ -9890,8 +9893,8 @@
                 ]
               ]
             ],
-            "rgba(59, 96, 72, 1)",
-            "rgba(59, 96, 72, 0.7)"
+            "rgba(101, 113, 122, 1)",
+            "rgba(101, 113, 122, 0.7)"
           ]
         ],
         "line-width": [
@@ -10071,7 +10074,7 @@
             "zoom"
           ],
           9,
-          "rgba(59, 96, 72, 0)",
+          "rgba(138, 149, 158, 0)",
           9.5,
           [
             "match",
@@ -10080,11 +10083,11 @@
               "type"
             ],
             "secondary",
-            "rgba(59, 96, 72, 1)",
-            "rgba(59, 96, 72, 0)"
+            "rgba(138, 149, 158, 1)",
+            "rgba(138, 149, 158, 0)"
           ],
           10.5,
-          "rgba(59, 96, 72, 1)"
+          "rgba(138, 149, 158, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -10232,7 +10235,7 @@
             "zoom"
           ],
           4,
-          "rgba(59, 96, 72, 0)",
+          "rgba(196, 173, 128, 0)",
           6,
           [
             "match",
@@ -10244,11 +10247,11 @@
               "primary",
               "trunk"
             ],
-            "rgba(59, 96, 72, 0)",
-            "rgba(59, 96, 72, 1)"
+            "rgba(196, 173, 128, 0)",
+            "rgba(196, 173, 128, 1)"
           ],
           7.5,
-          "rgba(59, 96, 72, 1)"
+          "rgba(196, 173, 128, 1)"
         ],
         "line-width": [
           "interpolate",
@@ -10335,7 +10338,7 @@
             "zoom"
           ],
           6,
-          "rgba(164, 183, 169, 1)",
+          "rgba(139, 140, 150, 1)",
           14,
           [
             "case",
@@ -10343,7 +10346,7 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "in",
               [
@@ -10358,8 +10361,8 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 0)",
+            "rgba(139, 140, 150, 1)"
           ],
           15,
           [
@@ -10380,13 +10383,13 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ],
           16,
           [
@@ -10395,8 +10398,8 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ]
         ],
         "line-width": [
@@ -10511,13 +10514,13 @@
                 ]
               ]
             ],
-            "rgba(164, 183, 169, 0)",
+            "rgba(139, 140, 150, 0)",
             [
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ],
           16,
           [
@@ -10526,8 +10529,8 @@
               "has",
               "service"
             ],
-            "rgba(164, 183, 169, 1)",
-            "rgba(164, 183, 169, 1)"
+            "rgba(139, 140, 150, 1)",
+            "rgba(139, 140, 150, 1)"
           ]
         ],
         "line-dasharray": [
@@ -10628,9 +10631,9 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 0.7)"
+          "rgba(197, 205, 210, 0.7)"
         ],
         "line-width": [
           "interpolate",
@@ -10663,7 +10666,7 @@
       "id": "road_aerialway_goods_lift",
       "type": "line",
       "paint": {
-        "line-color": "rgba(164, 183, 169, 0.7)",
+        "line-color": "rgba(197, 205, 210, 0.7)",
         "line-width": 4.25,
         "line-dasharray": [
           0.3,
@@ -10718,9 +10721,9 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 0.7)"
+          "rgba(197, 205, 210, 0.7)"
         ],
         "line-width": 4.75,
         "line-dasharray": [
@@ -10766,9 +10769,9 @@
             "zoom"
           ],
           12,
-          "rgba(164, 183, 169, 0)",
+          "rgba(197, 205, 210, 0)",
           13,
-          "rgba(164, 183, 169, 0.7)"
+          "rgba(197, 205, 210, 0.7)"
         ],
         "line-width": 2.25,
         "line-dasharray": [
@@ -10868,8 +10871,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "icon-color": "rgba(246, 242, 229, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(240, 238, 232, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 2
       },
       "metadata": {
@@ -10934,8 +10937,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "icon-color": "rgba(246, 242, 229, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(240, 238, 232, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 2
       },
       "metadata": {
@@ -11047,8 +11050,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "icon-color": "rgba(246, 242, 229, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(240, 238, 232, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 2
       },
       "metadata": {
@@ -11129,8 +11132,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "icon-color": "rgba(246, 242, 229, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(240, 238, 232, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 2
       },
       "metadata": {
@@ -11180,8 +11183,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(164, 183, 169, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-color": "rgba(197, 205, 210, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 0.5
       },
       "metadata": {
@@ -11386,8 +11389,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "#D7DCCE",
-        "text-halo-color": "#061F13",
+        "text-color": "#D6DCE0",
+        "text-halo-color": "#222B27",
         "text-halo-width": 1,
         "text-halo-blur": 0.5
       },
@@ -11659,26 +11662,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "text-halo-color": [
           "match",
@@ -11687,26 +11690,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "food",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "shop",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "education",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "sport",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "traffic",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "attraction",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "health",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "public",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "water",
-          "rgba(6, 31, 19, 0.8)",
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)",
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 0.5,
         "text-halo-blur": 0.5,
@@ -11717,26 +11720,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "icon-halo-color": [
           "match",
@@ -11745,26 +11748,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "food",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "shop",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "education",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "sport",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "traffic",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "attraction",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "health",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "public",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "water",
-          "rgba(6, 31, 19, 1)",
-          "rgba(6, 31, 19, 1)"
+          "rgba(34, 43, 39, 1)",
+          "rgba(34, 43, 39, 1)"
         ],
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5
@@ -11893,9 +11896,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1
       },
       "metadata": {
@@ -12009,9 +12012,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1
       },
       "metadata": {
@@ -12127,9 +12130,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1
       },
       "metadata": {
@@ -12235,9 +12238,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 1.5,
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5
       },
       "metadata": {
@@ -12350,9 +12353,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1
       },
       "metadata": {
@@ -12466,7 +12469,7 @@
       "paint": {
         "text-color": "rgba(213, 176, 99, 1)",
         "text-halo-blur": 1.5,
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5
       },
       "metadata": {
@@ -12643,8 +12646,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -12840,8 +12843,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5,
         "text-halo-blur": 1.5
       },
@@ -13039,9 +13042,9 @@
             "rank"
           ],
           1,
-          "rgba(246, 242, 229, 1)",
+          "rgba(240, 238, 232, 1)",
           25,
-          "rgba(246, 242, 229, 1)"
+          "rgba(240, 238, 232, 1)"
         ],
         "text-halo-color": [
           "interpolate",
@@ -13053,9 +13056,9 @@
             "rank"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           25,
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 1,
         "text-halo-blur": 1
@@ -13391,11 +13394,11 @@
             "protected_area",
             "park"
           ],
-          "rgba(246, 242, 229, 1)",
+          "rgba(240, 238, 232, 1)",
           "military",
-          "rgba(246, 242, 229, 1)",
+          "rgba(240, 238, 232, 1)",
           "aboriginal_lands",
-          "rgba(246, 242, 229, 1)",
+          "rgba(240, 238, 232, 1)",
           [
             "interpolate",
             [
@@ -13406,9 +13409,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ]
         ],
         "text-halo-color": [
@@ -13421,9 +13424,9 @@
             "rank"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           25,
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 1,
         "text-halo-blur": 1
@@ -13497,8 +13500,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "icon-color": "rgba(164, 183, 169, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(197, 205, 210, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5
       },
@@ -13778,26 +13781,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "text-halo-color": [
           "match",
@@ -13806,26 +13809,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "food",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "shop",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "education",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "sport",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "traffic",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "attraction",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "health",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "public",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "water",
-          "rgba(6, 31, 19, 0.8)",
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)",
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 0.5,
         "text-halo-blur": 0.5,
@@ -13836,26 +13839,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "icon-halo-color": [
           "match",
@@ -13864,26 +13867,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "food",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "shop",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "education",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "sport",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "traffic",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "attraction",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "health",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "public",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "water",
-          "rgba(6, 31, 19, 1)",
-          "rgba(6, 31, 19, 1)"
+          "rgba(34, 43, 39, 1)",
+          "rgba(34, 43, 39, 1)"
         ],
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5
@@ -14044,9 +14047,9 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1
       },
       "metadata": {
@@ -14251,8 +14254,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -14456,8 +14459,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5,
         "text-halo-blur": 1.5
       },
@@ -14689,9 +14692,9 @@
             "rank"
           ],
           1,
-          "rgba(246, 242, 229, 1)",
+          "rgba(240, 238, 232, 1)",
           25,
-          "rgba(246, 242, 229, 1)"
+          "rgba(240, 238, 232, 1)"
         ],
         "text-halo-color": [
           "interpolate",
@@ -14703,9 +14706,9 @@
             "rank"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           25,
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 1,
         "text-halo-blur": 1
@@ -15058,11 +15061,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -15073,9 +15076,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ],
           13,
@@ -15090,11 +15093,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -15105,9 +15108,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ]
         ],
@@ -15120,7 +15123,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -15132,9 +15135,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
@@ -15199,8 +15202,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "icon-color": "rgba(246, 242, 229, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(240, 238, 232, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5
       },
@@ -15266,9 +15269,9 @@
         ]
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
+        "text-color": "rgba(240, 238, 232, 1)",
         "text-halo-blur": 0.5,
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 0.5
       },
       "metadata": {
@@ -15453,7 +15456,7 @@
       "paint": {
         "text-color": "rgba(213, 176, 99, 1)",
         "icon-color": "rgba(213, 176, 99, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 1.5
       },
       "metadata": {
@@ -15484,12 +15487,12 @@
       "minzoom": 13,
       "maxzoom": 23,
       "paint": {
-        "icon-color": "rgba(164, 183, 169, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(197, 205, 210, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5,
-        "text-color": "rgba(164, 183, 169, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-color": "rgba(197, 205, 210, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 0.5,
         "text-halo-blur": 0.5
       },
@@ -15802,7 +15805,7 @@
       "paint": {
         "text-color": "rgba(213, 176, 99, 1)",
         "icon-color": "rgba(213, 176, 99, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 1.5
       },
       "metadata": {
@@ -16101,26 +16104,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "text-halo-color": [
           "match",
@@ -16129,26 +16132,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "food",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "shop",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "education",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "sport",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "traffic",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "attraction",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "health",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "public",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "water",
-          "rgba(6, 31, 19, 0.8)",
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)",
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 0.5,
         "text-halo-blur": 0.5,
@@ -16159,26 +16162,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "icon-halo-color": [
           "match",
@@ -16187,26 +16190,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "food",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "shop",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "education",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "sport",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "traffic",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "attraction",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "health",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "public",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "water",
-          "rgba(6, 31, 19, 1)",
-          "rgba(6, 31, 19, 1)"
+          "rgba(34, 43, 39, 1)",
+          "rgba(34, 43, 39, 1)"
         ],
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5
@@ -16243,12 +16246,12 @@
       "minzoom": 10,
       "maxzoom": 23,
       "paint": {
-        "icon-color": "rgba(164, 183, 169, 1)",
-        "icon-halo-color": "rgba(6, 31, 19, 1)",
+        "icon-color": "rgba(197, 205, 210, 1)",
+        "icon-halo-color": "rgba(34, 43, 39, 1)",
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5,
-        "text-color": "rgba(164, 183, 169, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-color": "rgba(197, 205, 210, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 0.5,
         "text-halo-blur": 0.5
       },
@@ -16678,8 +16681,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -16883,8 +16886,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5,
         "text-halo-blur": 1.5
       },
@@ -17082,8 +17085,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-color": "rgba(240, 238, 232, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -17319,9 +17322,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ],
           13,
           [
@@ -17334,9 +17337,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ]
         ],
         "text-halo-color": [
@@ -17348,7 +17351,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -17360,9 +17363,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
@@ -17716,11 +17719,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -17731,9 +17734,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ],
           13,
@@ -17748,11 +17751,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -17763,9 +17766,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ]
         ],
@@ -17778,7 +17781,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -17790,9 +17793,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
@@ -18092,26 +18095,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "text-halo-color": [
           "match",
@@ -18120,26 +18123,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "food",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "shop",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "education",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "sport",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "traffic",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "attraction",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "health",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "public",
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           "water",
-          "rgba(6, 31, 19, 0.8)",
-          "rgba(6, 31, 19, 0.8)"
+          "rgba(34, 43, 39, 0.8)",
+          "rgba(34, 43, 39, 0.8)"
         ],
         "text-halo-width": 0.5,
         "text-halo-blur": 0.5,
@@ -18150,26 +18153,26 @@
             "category"
           ],
           "religion",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "food",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "shop",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "education",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "sport",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "traffic",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "attraction",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "health",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "public",
-          "rgba(164, 183, 169, 1)",
+          "rgba(197, 205, 210, 1)",
           "water",
-          "rgba(164, 183, 169, 1)",
-          "rgba(164, 183, 169, 1)"
+          "rgba(197, 205, 210, 1)",
+          "rgba(197, 205, 210, 1)"
         ],
         "icon-halo-color": [
           "match",
@@ -18178,26 +18181,26 @@
             "category"
           ],
           "religion",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "food",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "shop",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "education",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "sport",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "traffic",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "attraction",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "health",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "public",
-          "rgba(6, 31, 19, 1)",
+          "rgba(34, 43, 39, 1)",
           "water",
-          "rgba(6, 31, 19, 1)",
-          "rgba(6, 31, 19, 1)"
+          "rgba(34, 43, 39, 1)",
+          "rgba(34, 43, 39, 1)"
         ],
         "icon-halo-width": 1.5,
         "icon-halo-blur": 1.5
@@ -18408,8 +18411,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -18613,8 +18616,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5,
         "text-halo-blur": 1.5
       },
@@ -18812,8 +18815,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-color": "rgba(240, 238, 232, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -19049,9 +19052,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ],
           13,
           [
@@ -19064,9 +19067,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ]
         ],
         "text-halo-color": [
@@ -19078,7 +19081,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -19090,9 +19093,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
@@ -19446,11 +19449,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -19461,9 +19464,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ],
           13,
@@ -19478,11 +19481,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -19493,9 +19496,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ]
         ],
@@ -19508,7 +19511,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -19520,9 +19523,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
@@ -19726,8 +19729,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -19923,8 +19926,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(62, 117, 103, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 1)",
+        "text-color": "rgba(154, 200, 222, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 1)",
         "text-halo-width": 1.5,
         "text-halo-blur": 1.5
       },
@@ -20114,8 +20117,8 @@
         "visibility": "visible"
       },
       "paint": {
-        "text-color": "rgba(246, 242, 229, 1)",
-        "text-halo-color": "rgba(6, 31, 19, 0.8)",
+        "text-color": "rgba(240, 238, 232, 1)",
+        "text-halo-color": "rgba(34, 43, 39, 0.8)",
         "text-halo-width": 1,
         "text-halo-blur": 1
       },
@@ -20343,9 +20346,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ],
           13,
           [
@@ -20358,9 +20361,9 @@
               "rank"
             ],
             1,
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             25,
-            "rgba(246, 242, 229, 1)"
+            "rgba(240, 238, 232, 1)"
           ]
         ],
         "text-halo-color": [
@@ -20372,7 +20375,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -20384,9 +20387,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
@@ -20732,11 +20735,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -20747,9 +20750,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ],
           13,
@@ -20764,11 +20767,11 @@
               "protected_area",
               "park"
             ],
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "military",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             "aboriginal_lands",
-            "rgba(246, 242, 229, 1)",
+            "rgba(240, 238, 232, 1)",
             [
               "interpolate",
               [
@@ -20779,9 +20782,9 @@
                 "rank"
               ],
               1,
-              "rgba(246, 242, 229, 1)",
+              "rgba(240, 238, 232, 1)",
               25,
-              "rgba(246, 242, 229, 1)"
+              "rgba(240, 238, 232, 1)"
             ]
           ]
         ],
@@ -20794,7 +20797,7 @@
             "zoom"
           ],
           1,
-          "rgba(6, 31, 19, 0.8)",
+          "rgba(34, 43, 39, 0.8)",
           13,
           [
             "interpolate",
@@ -20806,9 +20809,9 @@
               "rank"
             ],
             1,
-            "rgba(6, 31, 19, 0.8)",
+            "rgba(34, 43, 39, 0.8)",
             25,
-            "rgba(6, 31, 19, 0.8)"
+            "rgba(34, 43, 39, 0.8)"
           ]
         ],
         "text-halo-width": 1,
