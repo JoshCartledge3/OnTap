@@ -4,7 +4,7 @@ import {pubsService} from "../services/PubsService";
 import type {Coordinates} from "../types/Coordinates";
 import type {MapBounds} from "../types/MapBounds";
 
-export function usePubs(mapBounds?: MapBounds, mapZoom = 15) {
+export function usePubs(mapBounds?: MapBounds, mapZoom = 15, searchText = '') {
     const context = useContext(PubsContext);
     if (!context) {
         throw new Error('usePubs must be used within PubsProvider.');
@@ -12,9 +12,13 @@ export function usePubs(mapBounds?: MapBounds, mapZoom = 15) {
     const { pubs, pubsInRange, setPubs, setPubsInRange, pubsInBounds, setPubsInBounds } = context;
     const nearbyController = useRef<AbortController | null>(null);
     const inBoundsController = useRef<AbortController | null>(null);
+    const filteredPubsInBounds = useMemo(
+        () => pubsService.searchPubs(pubsInBounds, searchText),
+        [pubsInBounds, searchText],
+    );
     const clusterIndex = useMemo(
-        () => pubsService.createMapClusterIndex(pubsInBounds),
-        [pubsInBounds],
+        () => pubsService.createMapClusterIndex(filteredPubsInBounds),
+        [filteredPubsInBounds],
     );
     const mapPoints = useMemo(
         () => mapBounds ? pubsService.getMapPoints(clusterIndex, mapBounds, mapZoom) : [],
@@ -86,6 +90,7 @@ export function usePubs(mapBounds?: MapBounds, mapZoom = 15) {
         pubs,
         pubsInRange,
         pubsInBounds,
+        filteredPubsInBounds,
         mapPoints,
         getClusterExpansionZoom,
         getPubsAsync,
