@@ -10,12 +10,21 @@ export const pubsService = {
     getPubsAsync,
     getPubsInRangeAsync,
     getPubsInBoundsAsync,
+    searchPubs,
     createMapClusterIndex,
     getMapPoints,
     getClusterExpansionZoom,
 };
 
 const client = onTapClient.pubsClient;
+
+function searchPubs(pubs: readonly PubDto[], searchText: string): readonly PubDto[] {
+    const query = searchText.trim().toLowerCase();
+    if (!query) return pubs;
+
+    return pubs.filter(pub => [pub.name, pub.address, pub.postcode]
+        .some(value => value?.toLowerCase().includes(query)));
+}
 
 function createMapClusterIndex(pubs: readonly PubDto[]) {
     return new Supercluster<PubProperties>({ radius: 50, maxZoom: 16 })

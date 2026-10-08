@@ -1,6 +1,7 @@
 export type ThemeColors = {
     background: string;
     surface: string;
+    surfaceRaised: string;
     surfaceMuted: string;
     text: string;
     textMuted: string;
@@ -24,6 +25,7 @@ export const lightTheme = {
     colors: {
         background: '#F6F3E9',
         surface: '#F6F3E9',
+        surfaceRaised: '#FAFAF8',
         surfaceMuted: '#E7EBDD',
         text: '#123329',
         textMuted: '#68786C',
@@ -44,6 +46,7 @@ export const darkTheme = {
     colors: {
         background: '#02120B',
         surface: '#061D12',
+        surfaceRaised: '#111413',
         surfaceMuted: '#0B281A',
         text: '#F6F2E5',
         textMuted: '#A4B7A9',

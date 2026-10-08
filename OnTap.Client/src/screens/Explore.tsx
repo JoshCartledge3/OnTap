@@ -8,13 +8,18 @@ import {SwitchMapStyleButton} from "../components/explore/SwitchMapStyleButton";
 import {MapStylePicker} from "../components/explore/MapStylePicker";
 import type {MapStyleOption} from "../types/MapStyleOption";
 import {usePubs} from "../hooks";
+import PubList from "../components/explore/PubList";
+import SearchBar from '../components/search/SearchBar';
+import {BottomSheetTextInput} from '@gorhom/bottom-sheet';
 
 export default function Explore() {
     const mapRef = useRef<PubMapHandle>(null);
     const [showMapStylePicker, setShowMapStylePicker] = useState(false);
     const [selectedMapStyle, setSelectedMapStyle] = useState<MapStyleOption>('ontap');
     const [mapViewport, setMapViewport] = useState<PubMapViewport>();
-    const {mapPoints, getClusterExpansionZoom, getPubsInBoundsAsync,} = usePubs(mapViewport?.bounds, mapViewport?.zoom);
+    const [searchText, setSearchText] = useState('');
+    const {mapPoints, filteredPubsInBounds, getClusterExpansionZoom, getPubsInBoundsAsync,} =
+        usePubs(mapViewport?.bounds, mapViewport?.zoom, searchText);
 
     function onViewportChanged(viewport: PubMapViewport) {
         setMapViewport(viewport);
@@ -44,6 +49,18 @@ export default function Explore() {
                 onClose={() => setShowMapStylePicker(false)}
                 selectedStyle={selectedMapStyle}
                 onSelect={setSelectedMapStyle}
+            />
+            <PubList
+                pubs={filteredPubsInBounds}
+                header={collapse => (
+                    <SearchBar
+                        value={searchText}
+                        onChangeText={setSearchText}
+                        onSubmitSearch={collapse}
+                        placeholder="Search pubs nearby"
+                        inputComponent={BottomSheetTextInput}
+                    />
+                )}
             />
         </View>
     );
