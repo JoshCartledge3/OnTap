@@ -51,7 +51,7 @@ function searchPubs(pubs: readonly PubSummaryDto[], searchText: string): readonl
 }
 
 function createMapClusterIndex(pubs: readonly PubSummaryDto[]) {
-    return new Supercluster<PubProperties>({ radius: 50, maxZoom: 16 })
+    return new Supercluster<PubProperties>({ radius: 80, maxZoom: 20 })
         .load(toGeoJsonFeatureCollection(pubs).features);
 }
 
