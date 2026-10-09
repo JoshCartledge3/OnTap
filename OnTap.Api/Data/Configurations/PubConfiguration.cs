@@ -11,6 +11,14 @@ public class PubConfiguration : IEntityTypeConfiguration<PubEntity>
         builder.ToTable("Pubs");
         builder.HasKey(pub => pub.Id);
 
+        builder.Property(pub => pub.OsmType).HasConversion<string>().HasMaxLength(8);
+        builder.HasIndex(pub => new { pub.OsmType, pub.OsmId }).IsUnique();
+        builder.Property(pub => pub.VenueType).HasConversion<string>().HasMaxLength(10).IsRequired();
+        builder.Property(pub => pub.WheelchairAccess).HasConversion<string>().HasMaxLength(10);
+        builder.Property(pub => pub.PaymentMethodsAccepted).HasConversion<string>().HasMaxLength(10);
+        builder.PrimitiveCollection(pub => pub.SportsBroadcasters)
+            .ElementType().HasConversion<string>();
+
         builder.Property(pub => pub.Name).HasMaxLength(200).IsRequired();
         builder.Property(pub => pub.Address).HasMaxLength(500).IsRequired();
         builder.Property(pub => pub.Postcode).HasMaxLength(20);

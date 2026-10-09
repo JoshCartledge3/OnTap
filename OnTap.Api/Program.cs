@@ -14,6 +14,13 @@ builder.Services.AddOpenApi(options =>
 });
 
 builder.Services.AddScoped<IPubService, PubService>();
+builder.Services.AddHttpClient<IOverpassService, OverpassService>(client =>
+{
+    client.DefaultRequestHeaders.UserAgent.ParseAdd("OnTap/1.0");
+    client.BaseAddress = new Uri(builder.Configuration["Overpass:BaseUrl"]
+        ?? throw new InvalidOperationException("Missing configuration value for 'Overpass:BaseUrl'."));
+    client.Timeout = TimeSpan.FromMinutes(4);
+});
 
 builder.Services.AddDbContext<OnTapDbContext>(options =>
 {
@@ -31,6 +38,14 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+if (args.Contains("--import-pubs"))
+{
+    using var scope = app.Services.CreateScope();
+    var overpassService = scope.ServiceProvider.GetRequiredService<IOverpassService>();
+    await overpassService.ImportPubsAsync();
+    return;
+}
 
 app.UseMiddleware<RequestLoggingMiddleware>();
 
