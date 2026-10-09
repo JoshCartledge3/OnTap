@@ -1,4 +1,4 @@
-import type {PubDto} from '../../api/generated/client';
+import type {PubSummaryDto} from '../../api/generated/client';
 import {useTheme} from '../../hooks';
 import {View, StyleSheet} from "react-native";
 import {AppText} from "../typography/AppText";
@@ -6,7 +6,7 @@ import Heart from "lucide-react-native/icons/heart";
 import {getPubInitials} from "../../utils/getPubInitials";
 
 type Props = {
-    pub: PubDto;
+    pub: PubSummaryDto;
 };
 
 export default function PubListItem({pub}: Props) {

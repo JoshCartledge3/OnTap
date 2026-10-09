@@ -1,7 +1,8 @@
 import { StyleSheet, View } from 'react-native';
 import PubMap from '../components/map/PubMap';
 import {SafeAreaView} from "react-native-safe-area-context";
-import type { PubMapHandle, PubMapViewport } from '../components/map/PubMap';
+import type { PubMapHandle } from '../components/map/PubMap';
+import type {MapViewport} from '../types/MapViewport';
 import {RecenterButton} from "../components/explore/RecenterButton";
 import {useRef, useState} from "react";
 import {SwitchMapStyleButton} from "../components/explore/SwitchMapStyleButton";
@@ -16,25 +17,16 @@ export default function Explore() {
     const mapRef = useRef<PubMapHandle>(null);
     const [showMapStylePicker, setShowMapStylePicker] = useState(false);
     const [selectedMapStyle, setSelectedMapStyle] = useState<MapStyleOption>('ontap');
-    const [mapViewport, setMapViewport] = useState<PubMapViewport>();
+    const [mapViewport, setMapViewport] = useState<MapViewport>();
     const [searchText, setSearchText] = useState('');
-    const {mapPoints, filteredPubsInBounds, getClusterExpansionZoom, getPubsInBoundsAsync,} =
-        usePubs(mapViewport?.bounds, mapViewport?.zoom, searchText);
-
-    function onViewportChanged(viewport: PubMapViewport) {
-        setMapViewport(viewport);
-
-        void getPubsInBoundsAsync(viewport.bounds).catch(() => {
-            // The service logs errors. Keep the existing results.
-        });
-    }
+    const {mapPoints, filteredPubsInBounds, getClusterExpansionZoom} = usePubs(mapViewport, searchText);
 
     return (
         <View style={styles.container}>
             <PubMap
                 ref={mapRef}
                 mapStyle={selectedMapStyle}
-                onViewportChanged={onViewportChanged}
+                onViewportChanged={setMapViewport}
                 mapPoints={mapPoints}
                 getClusterExpansionZoom={getClusterExpansionZoom}
             />

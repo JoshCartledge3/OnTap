@@ -20,7 +20,7 @@ export class PubsClient {
     /**
      * @return OK
      */
-    getPubs(signal?: AbortSignal): Promise<PubDto[]> {
+    getPubs(signal?: AbortSignal): Promise<PubSummaryDto[]> {
         let url_ = this.baseUrl + "/api/pubs/Pubs";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -37,13 +37,13 @@ export class PubsClient {
         });
     }
 
-    protected processGetPubs(response: Response): Promise<PubDto[]> {
+    protected processGetPubs(response: Response): Promise<PubSummaryDto[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubDto[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubSummaryDto[];
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -51,7 +51,7 @@ export class PubsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<PubDto[]>(null as any);
+        return Promise.resolve<PubSummaryDto[]>(null as any);
     }
 
     /**
@@ -60,7 +60,7 @@ export class PubsClient {
      * @param radiusMetres (optional) 
      * @return OK
      */
-    getPubsInRange(latitude?: any | undefined, longitude?: any | undefined, radiusMetres?: any | undefined, signal?: AbortSignal): Promise<PubDto[]> {
+    getPubsInRange(latitude?: any | undefined, longitude?: any | undefined, radiusMetres?: any | undefined, signal?: AbortSignal): Promise<PubSummaryDto[]> {
         let url_ = this.baseUrl + "/api/pubs/PubsInRange?";
         if (latitude === null)
             throw new globalThis.Error("The parameter 'latitude' cannot be null.");
@@ -89,13 +89,13 @@ export class PubsClient {
         });
     }
 
-    protected processGetPubsInRange(response: Response): Promise<PubDto[]> {
+    protected processGetPubsInRange(response: Response): Promise<PubSummaryDto[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubDto[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubSummaryDto[];
             return result200;
             });
         } else if (status !== 200 && status !== 204) {
@@ -103,7 +103,7 @@ export class PubsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<PubDto[]>(null as any);
+        return Promise.resolve<PubSummaryDto[]>(null as any);
     }
 
     /**
@@ -113,7 +113,7 @@ export class PubsClient {
      * @param north (optional) 
      * @return OK
      */
-    getPubsInBounds(west?: any | undefined, south?: any | undefined, east?: any | undefined, north?: any | undefined, signal?: AbortSignal): Promise<PubDto[]> {
+    getPubsInBounds(west?: any | undefined, south?: any | undefined, east?: any | undefined, north?: any | undefined, signal?: AbortSignal): Promise<PubSummaryDto[]> {
         let url_ = this.baseUrl + "/api/pubs/PubsInBounds?";
         if (west === null)
             throw new globalThis.Error("The parameter 'west' cannot be null.");
@@ -146,13 +146,13 @@ export class PubsClient {
         });
     }
 
-    protected processGetPubsInBounds(response: Response): Promise<PubDto[]> {
+    protected processGetPubsInBounds(response: Response): Promise<PubSummaryDto[]> {
         const status = response.status;
         let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
         if (status === 200) {
             return response.text().then((_responseText) => {
             let result200: any = null;
-            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubDto[];
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as PubSummaryDto[];
             return result200;
             });
         } else if (status === 400) {
@@ -166,7 +166,7 @@ export class PubsClient {
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
             });
         }
-        return Promise.resolve<PubDto[]>(null as any);
+        return Promise.resolve<PubSummaryDto[]>(null as any);
     }
 }
 
@@ -180,15 +180,13 @@ export interface ProblemDetails {
     [key: string]: any;
 }
 
-export interface PubDto {
+export interface PubSummaryDto {
     id: string;
     name: string;
     address: string;
-    postcode: string | null;
     latitude: any;
     longitude: any;
-    status: string;
-    createdAt: string;
+    isOpenNow: boolean | null;
 
     [key: string]: any;
 }

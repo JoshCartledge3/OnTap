@@ -1,4 +1,6 @@
+using System.Linq.Expressions;
 using NetTopologySuite.Geometries;
+using OsmOpeningHours;
 using OnTap.Api.Contracts;
 using OnTap.Api.Entities;
 
@@ -6,24 +8,59 @@ namespace OnTap.Api.Mappers;
 
 public static class PubMapper
 {
-    public static PubDto ToDto(this PubEntity pub)
+    private static readonly OpeningHoursEvaluationContext OpeningHoursContext = new(
+        TimeZoneInfo.FindSystemTimeZoneById("Europe/London"));
+
+    public static readonly Expression<Func<PubEntity, PubEntity>> SummaryFields = pub => new PubEntity
     {
-        return new PubDto(
+        Id = pub.Id,
+        Name = pub.Name,
+        Address = pub.Address,
+        Postcode = pub.Postcode,
+        Place = pub.Place,
+        Village = pub.Village,
+        Town = pub.Town,
+        City = pub.City,
+        Location = pub.Location,
+        OpeningHours = pub.OpeningHours
+    };
+
+    public static PubSummaryDto ToDto(this PubEntity pub, DateTimeOffset now)
+    {
+        var locality = pub.Town ?? pub.Village ?? pub.City ?? pub.Place;
+        var address = string.Join(", ", new[] { pub.Address, locality, pub.Postcode }
+            .Where(value => !string.IsNullOrWhiteSpace(value)));
+
+        return new PubSummaryDto(
             pub.Id,
             pub.Name,
-            pub.Address,
-            pub.Postcode,
+            string.IsNullOrEmpty(address) ? "No address available" : address,
             pub.Location.Y,
             pub.Location.X,
-            pub.Status.ToString(),
-            pub.CreatedAt);
+            GetIsOpenNow(pub.OpeningHours, now));
+    }
+
+    private static bool? GetIsOpenNow(string? openingHours, DateTimeOffset now)
+    {
+        if (string.IsNullOrWhiteSpace(openingHours)
+            || !OpeningHoursParser.TryParse(openingHours, out var schedule, out _)
+            || schedule!.RequiredEvaluationFeatures.HasFlag(OpeningHoursFeatureFlags.RequiresHolidayCalendar))
+            return null;
+
+        return schedule.Evaluate(now, OpeningHoursContext).State switch
+        {
+            OpeningHoursState.Open => true,
+            OpeningHoursState.Closed => false,
+            _ => null
+        };
     }
 
     public static PubEntity ToEntity(this OverpassElement overpassVenue)
     {
         var tags = overpassVenue.Tags;
 
-        string? Tag(string key) => tags.GetValueOrDefault(key);
+        string? Tag(string key) => tags.TryGetValue(key, out var value) && !string.IsNullOrWhiteSpace(value)
+            ? value.Trim() : null;
 
         bool? Flag(string key) => Tag(key) switch
         {
@@ -74,14 +111,19 @@ public static class PubMapper
         if (sports.Contains("tnt_sports"))
             broadcasters.Add(SportsBroadcaster.TntSports);
 
+        var address = $"{Tag("addr:housenumber")} {Tag("addr:street")}".Trim();
+
         return new PubEntity
         {
             OsmType = Enum.Parse<OsmType>(overpassVenue.Type, ignoreCase: true),
             OsmId = overpassVenue.Id,
-            VenueType = Enum.Parse<VenueType>(tags["amenity"], ignoreCase: true),
             Name = tags["name"],
-            Address = $"{Tag("addr:housenumber")} {tags["addr:street"]}".Trim(),
-            Postcode = tags["addr:postcode"],
+            Address = string.IsNullOrEmpty(address) ? null : address,
+            Postcode = Tag("addr:postcode"),
+            Place = Tag("addr:place"),
+            Village = Tag("addr:village"),
+            Town = Tag("addr:town"),
+            City = Tag("addr:city"),
             Phone = Tag("phone") ?? Tag("contact:phone"),
             OpeningHours = Tag("opening_hours"),
             DogsAllowed = Flag("dog"),

@@ -1,5 +1,5 @@
 import {Keyboard, StyleSheet, View} from 'react-native';
-import type {PubDto} from '../../api/generated/client';
+import type {PubSummaryDto} from '../../api/generated/client';
 import PubListItem from './PubListItem';
 import BottomSheet, {BottomSheetFlatList, useBottomSheet} from '@gorhom/bottom-sheet';
 import {useTheme} from '../../hooks';
@@ -9,7 +9,7 @@ import Animated, {Extrapolation, interpolate, useAnimatedStyle, useSharedValue} 
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
 
 type Props = {
-    pubs: readonly PubDto[];
+    pubs: readonly PubSummaryDto[];
     header: (collapse: () => void) => ReactNode;
 };
 
@@ -53,7 +53,7 @@ export default function PubList({pubs, header}: Props) {
                 >
                     <PubListHeader header={header}/>
                 </View>
-                <BottomSheetFlatList<PubDto>
+                <BottomSheetFlatList<PubSummaryDto>
                     style={[styles.list, listOpacityStyle]}
                     pointerEvents={isCollapsed ? 'none' : 'auto'}
                     data={pubs}
