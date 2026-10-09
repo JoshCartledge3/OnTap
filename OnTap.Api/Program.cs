@@ -43,7 +43,7 @@ if (args.Contains("--import-pubs"))
 {
     using var scope = app.Services.CreateScope();
     var overpassService = scope.ServiceProvider.GetRequiredService<IOverpassService>();
-    await overpassService.GetUkPubsAndBarsAsync();
+    await overpassService.ImportPubsAsync();
     return;
 }
 

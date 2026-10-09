@@ -1,11 +1,15 @@
 using System.Text.Json;
 using OnTap.Api.Contracts;
+using OnTap.Api.Entities;
+using OnTap.Api.Mappers;
 using OnTap.Api.Services.Abstraction;
 
 namespace OnTap.Api.Services;
 
-public class OverpassService(HttpClient httpClient, IHostEnvironment environment, ILogger<OverpassService> logger) : IOverpassService
+public class OverpassService(HttpClient httpClient, IHostEnvironment environment, ILogger<OverpassService> logger, IPubService pubService) : IOverpassService
 {
+    private static readonly string[] RequiredTags = ["name", "addr:street", "addr:postcode"];
+
     private const string UkPubsAndBarsQuery = """
         [out:json][timeout:180];
         area["ISO3166-1"="GB"]["admin_level"="2"]->.uk;
@@ -13,36 +17,39 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
         out body center;
         """;
 
-    private const string WakefieldPubsAndBarsQuery = """
-        [out:json][timeout:60];
-        area["ISO3166-1"="GB"]["admin_level"="2"]->.uk;
-        rel(area.uk)["boundary"="administrative"]["name"="Wakefield"];
-        map_to_area->.wakefield;
-        nwr["amenity"~"^(pub|bar)$"](area.wakefield);
-        out body center;
-        """;
-
-    public async Task<OverpassResponse> GetUkPubsAndBarsAsync(CancellationToken ct = default)
+    private async Task<OverpassResponse> GetUkPubsAndBarsAsync(CancellationToken ct = default)
     {
-        var query = environment.IsDevelopment() ? WakefieldPubsAndBarsQuery : UkPubsAndBarsQuery;
-        var scope = environment.IsDevelopment() ? "Wakefield" : "UK";
+        var isDevelopment = environment.IsDevelopment();
+        const string scope = "UK";
+        var source = isDevelopment ? "local JSON" : "Overpass";
 
-        logger.LogInformation("Fetching pubs and bars from Overpass for {Scope}", scope);
+        logger.LogInformation("Loading pubs and bars for {Scope} from {Source}", scope, source);
 
         try
         {
-            using var request = new HttpRequestMessage(HttpMethod.Post, "interpreter");
-            request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+            OverpassResponse? result;
+            if (isDevelopment)
             {
-                ["data"] = query
-            });
+                await using var stream = File.OpenRead(Path.Combine(environment.ContentRootPath, "Data", "Development", "osm-uk.json"));
+                result = await JsonSerializer.DeserializeAsync<OverpassResponse>(stream, JsonSerializerOptions.Web, ct);
+            }
+            else
+            {
+                using var request = new HttpRequestMessage(HttpMethod.Post, "interpreter");
+                request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
+                {
+                    ["data"] = UkPubsAndBarsQuery
+                });
 
-            using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
-            response.EnsureSuccessStatusCode();
+                using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
+                response.EnsureSuccessStatusCode();
 
-            await using var stream = await response.Content.ReadAsStreamAsync(ct);
-            var result = await JsonSerializer.DeserializeAsync<OverpassResponse>(stream, JsonSerializerOptions.Web, ct)
-                ?? throw new JsonException("Overpass returned a null response.");
+                await using var stream = await response.Content.ReadAsStreamAsync(ct);
+                result = await JsonSerializer.DeserializeAsync<OverpassResponse>(stream, JsonSerializerOptions.Web, ct);
+            }
+
+            if (result is null)
+                throw new JsonException("Overpass returned a null response.");
 
             // Check for Overpass query failure
             if (!string.IsNullOrWhiteSpace(result.Remark))
@@ -50,12 +57,12 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
                 throw new InvalidOperationException($"Overpass query failed: {result.Remark}");
             }
 
-            logger.LogInformation("Overpass returned {ElementCount} pubs and bars for {Scope}", result.Elements.Count, scope);
+            logger.LogInformation("Loaded {ElementCount} pubs and bars for {Scope} from {Source}", result.Elements.Count, scope, source);
             return result;
         }
         catch (OperationCanceledException) when (ct.IsCancellationRequested)
         {
-            logger.LogInformation("Overpass fetch cancelled for {Scope}", scope);
+            logger.LogInformation("Loading pubs and bars cancelled for {Scope} from {Source}", scope, source);
             throw;
         }
         catch (Exception exception)
@@ -65,9 +72,41 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
                 ? LogLevel.Warning
                 : LogLevel.Error;
 
-            logger.Log(level, exception, "Failed to fetch pubs and bars from Overpass for {Scope}", scope);
+            logger.Log(level, exception, "Failed to load pubs and bars for {Scope} from {Source}", scope, source);
             throw;
         }
     }
-    
+
+    public async Task ImportPubsAsync(CancellationToken ct = default)
+    {
+        var overpassResult = await GetUkPubsAndBarsAsync(ct);
+        List<PubEntity> mappedEntities = [];
+        foreach (var element in overpassResult.Elements)
+        {
+            if (!ValidateOverpassElement(element))
+            {
+                continue;
+            }
+            mappedEntities.Add(element.ToEntity());
+        }
+
+        await pubService.AddOrUpdatePubsAsync(mappedEntities, ct);
+    }
+
+    private static bool ValidateOverpassElement(OverpassElement element)
+    {
+        if (!RequiredTags.All(tag => element.Tags.TryGetValue(tag, out var value)
+                && !string.IsNullOrWhiteSpace(value)))
+        {
+            return false;
+        }
+
+        var latitude = element.Latitude ?? element.Center?.Latitude;
+        var longitude = element.Longitude ?? element.Center?.Longitude;
+
+        return latitude.HasValue && longitude.HasValue
+            && double.IsFinite(latitude.Value) && double.IsFinite(longitude.Value)
+            && latitude.Value is >= -90 and <= 90
+            && longitude.Value is >= -180 and <= 180;
+    }
 }

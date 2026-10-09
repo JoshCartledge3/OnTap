@@ -16,3 +16,6 @@
 .env
 .env.*
 !.env.example
+
+# Local UK OSM data
+OnTap.Api/Data/Development/osm-uk.json

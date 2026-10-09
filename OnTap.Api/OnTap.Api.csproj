@@ -28,6 +28,11 @@
         <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="10.2.3" />
     </ItemGroup>
 
+    <ItemGroup>
+        <Content Update="Data/Development/osm-uk.json"
+                 CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Never" />
+    </ItemGroup>
+
     <Target Name="NSwag" AfterTargets="Build" DependsOnTargets="GenerateOpenApiDocuments"
             Condition="'$(DesignTimeBuild)' != 'true' And '$(DotNetWatchBuild)' != 'true' And '$(SkipNswagGeneration)' != 'true'">
         <Exec WorkingDirectory="$(ProjectDir)" EnvironmentVariables="ASPNETCORE_ENVIRONMENT=Nswag"
