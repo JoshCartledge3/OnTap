@@ -11,25 +11,25 @@ namespace OnTap.Api.Controllers;
 public class PubController(IPubService pubService) : ControllerBase
 {
     [HttpGet("Pubs", Name = "GetPubs")]
-    [ProducesResponseType(typeof(IEnumerable<PubDto>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<PubDto>>> GetPubs(CancellationToken ct)
+    [ProducesResponseType(typeof(IEnumerable<PubSummaryDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<PubSummaryDto>>> GetPubs(CancellationToken ct)
     {
         var pubs = await pubService.GetPubsAsync(ct);
         return Ok(pubs);
     }
     
     [HttpGet("PubsInRange", Name = "GetPubsInRange")]
-    [ProducesResponseType(typeof(IEnumerable<PubDto>), StatusCodes.Status200OK)]
-    public async Task<ActionResult<IEnumerable<PubDto>>> GetPubsInRange([FromQuery]GetPubsInRangeRequest request, CancellationToken ct)
+    [ProducesResponseType(typeof(IEnumerable<PubSummaryDto>), StatusCodes.Status200OK)]
+    public async Task<ActionResult<IEnumerable<PubSummaryDto>>> GetPubsInRange([FromQuery]GetPubsInRangeRequest request, CancellationToken ct)
     {
         var pubs = await pubService.GetPubsInRangeAsync(request, ct);
         return Ok(pubs);
     }
 
     [HttpGet("PubsInBounds", Name = "GetPubsInBounds")]
-    [ProducesResponseType(typeof(IEnumerable<PubDto>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(IEnumerable<PubSummaryDto>), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public async Task<ActionResult<IEnumerable<PubDto>>> GetPubsInBounds(
+    public async Task<ActionResult<IEnumerable<PubSummaryDto>>> GetPubsInBounds(
         [FromQuery] GetPubsInBoundsRequest request, CancellationToken ct = default)
     {
         var pubs = await pubService.GetPubsInBoundsAsync(request, ct);

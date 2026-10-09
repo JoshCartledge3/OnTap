@@ -8,22 +8,22 @@ namespace OnTap.Api.Services;
 
 public class OverpassService(HttpClient httpClient, IHostEnvironment environment, ILogger<OverpassService> logger, IPubService pubService) : IOverpassService
 {
-    private static readonly string[] RequiredTags = ["name", "addr:street", "addr:postcode"];
+    private static readonly string[] RequiredTags = ["name"];
 
-    private const string UkPubsAndBarsQuery = """
+    private const string UkPubsQuery = """
         [out:json][timeout:180];
         area["ISO3166-1"="GB"]["admin_level"="2"]->.uk;
-        nwr["amenity"~"^(pub|bar)$"](area.uk);
+        nwr["amenity"="pub"](area.uk);
         out body center;
         """;
 
-    private async Task<OverpassResponse> GetUkPubsAndBarsAsync(CancellationToken ct = default)
+    private async Task<OverpassResponse> GetUkPubsAsync(CancellationToken ct = default)
     {
         var isDevelopment = environment.IsDevelopment();
         const string scope = "UK";
         var source = isDevelopment ? "local JSON" : "Overpass";
 
-        logger.LogInformation("Loading pubs and bars for {Scope} from {Source}", scope, source);
+        logger.LogInformation("Loading pubs for {Scope} from {Source}", scope, source);
 
         try
         {
@@ -38,7 +38,7 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
                 using var request = new HttpRequestMessage(HttpMethod.Post, "interpreter");
                 request.Content = new FormUrlEncodedContent(new Dictionary<string, string>
                 {
-                    ["data"] = UkPubsAndBarsQuery
+                    ["data"] = UkPubsQuery
                 });
 
                 using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
@@ -57,12 +57,12 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
                 throw new InvalidOperationException($"Overpass query failed: {result.Remark}");
             }
 
-            logger.LogInformation("Loaded {ElementCount} pubs and bars for {Scope} from {Source}", result.Elements.Count, scope, source);
+            logger.LogInformation("Loaded {ElementCount} pubs for {Scope} from {Source}", result.Elements.Count, scope, source);
             return result;
         }
         catch (OperationCanceledException) when (ct.IsCancellationRequested)
         {
-            logger.LogInformation("Loading pubs and bars cancelled for {Scope} from {Source}", scope, source);
+            logger.LogInformation("Loading pubs cancelled for {Scope} from {Source}", scope, source);
             throw;
         }
         catch (Exception exception)
@@ -72,14 +72,14 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
                 ? LogLevel.Warning
                 : LogLevel.Error;
 
-            logger.Log(level, exception, "Failed to load pubs and bars for {Scope} from {Source}", scope, source);
+            logger.Log(level, exception, "Failed to load pubs for {Scope} from {Source}", scope, source);
             throw;
         }
     }
 
     public async Task ImportPubsAsync(CancellationToken ct = default)
     {
-        var overpassResult = await GetUkPubsAndBarsAsync(ct);
+        var overpassResult = await GetUkPubsAsync(ct);
         List<PubEntity> mappedEntities = [];
         foreach (var element in overpassResult.Elements)
         {
@@ -95,6 +95,9 @@ public class OverpassService(HttpClient httpClient, IHostEnvironment environment
 
     private static bool ValidateOverpassElement(OverpassElement element)
     {
+        if (!element.Tags.TryGetValue("amenity", out var amenity) || amenity != "pub")
+            return false;
+
         if (!RequiredTags.All(tag => element.Tags.TryGetValue(tag, out var value)
                 && !string.IsNullOrWhiteSpace(value)))
         {

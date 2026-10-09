@@ -1,5 +1,5 @@
 import type { FeatureCollection, Point } from 'geojson';
-import type { PubDto } from '../api/generated/client';
+import type { PubSummaryDto } from '../api/generated/client';
 
 export type PubProperties = {
     name: string;
@@ -7,7 +7,7 @@ export type PubProperties = {
     cluster?: false;
 };
 
-export function toGeoJsonFeatureCollection(pubs: readonly PubDto[]): FeatureCollection<Point, PubProperties> {
+export function toGeoJsonFeatureCollection(pubs: readonly PubSummaryDto[]): FeatureCollection<Point, PubProperties> {
     return {
         type: 'FeatureCollection',
         features: pubs.map(pub => ({

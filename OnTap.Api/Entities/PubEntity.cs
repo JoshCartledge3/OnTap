@@ -8,8 +8,12 @@ public class PubEntity
     public OsmType? OsmType { get; set; }
     public long? OsmId { get; set; }
     public required string Name { get; set; }
-    public required string Address { get; set; }
+    public string? Address { get; set; }
     public string? Postcode { get; set; }
+    public string? Place { get; set; }
+    public string? Village { get; set; }
+    public string? Town { get; set; }
+    public string? City { get; set; }
     public string? Phone { get; set; }
     public string? OpeningHours { get; set; }
     public bool? DogsAllowed { get; set; }
@@ -23,6 +27,5 @@ public class PubEntity
     public required Point Location { get; set; }
 
     public PubStatus Status { get; set; } = PubStatus.Open;
-    public VenueType VenueType { get; set; }
     public DateTimeOffset CreatedAt { get; set; } = DateTimeOffset.UtcNow;
 }

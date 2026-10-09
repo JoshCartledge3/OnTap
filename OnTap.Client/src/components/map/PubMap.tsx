@@ -8,7 +8,7 @@ import {PubMarker} from './PubMarker';
 import {PubCluster} from "./PubCluster";
 import {useLocation, useTheme} from '../../hooks';
 import UserLocationMarker from './UserLocationMarker';
-import type {MapBounds} from '../../types/MapBounds';
+import type {MapViewport} from '../../types/MapViewport';
 import {pubMarkerPointerX} from './mapStyles';
 import type {MapStyleOption} from "../../types/MapStyleOption";
 import {getMapStyle} from "../../theme/mapStyles";
@@ -19,15 +19,10 @@ export type PubMapHandle = {
     recenter: () => void;
 }
 
-export type PubMapViewport = {
-    bounds: MapBounds;
-    zoom: number;
-}
-
 type Props = {
     ref?: Ref<PubMapHandle>;
     mapStyle?: MapStyleOption;
-    onViewportChanged: (viewport: PubMapViewport) => void;
+    onViewportChanged: (viewport: MapViewport) => void;
     mapPoints: (ClusterFeature<unknown> | PointFeature<PubProperties>)[];
     getClusterExpansionZoom: (clusterId: number) => number;
 };

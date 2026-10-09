@@ -3,8 +3,13 @@ import { PubsContext } from '../contexts/PubsContext';
 import {pubsService} from "../services/PubsService";
 import type {Coordinates} from "../types/Coordinates";
 import type {MapBounds} from "../types/MapBounds";
+import type {MapViewport} from '../types/MapViewport';
 
-export function usePubs(mapBounds?: MapBounds, mapZoom = 15, searchText = '') {
+const minimumPubMapZoom = 12;
+
+export function usePubs(mapViewport?: MapViewport, searchText = '') {
+    const mapBounds = mapViewport?.bounds;
+    const mapZoom = mapViewport?.zoom ?? 15;
     const context = useContext(PubsContext);
     if (!context) {
         throw new Error('usePubs must be used within PubsProvider.');
@@ -12,16 +17,24 @@ export function usePubs(mapBounds?: MapBounds, mapZoom = 15, searchText = '') {
     const { pubs, pubsInRange, setPubs, setPubsInRange, pubsInBounds, setPubsInBounds } = context;
     const nearbyController = useRef<AbortController | null>(null);
     const inBoundsController = useRef<AbortController | null>(null);
-    const filteredPubsInBounds = useMemo(
+    const loadedBounds = useRef<MapBounds | null>(null);
+    const pendingBounds = useRef<MapBounds | null>(null);
+    const searchedPubs = useMemo(
         () => pubsService.searchPubs(pubsInBounds, searchText),
         [pubsInBounds, searchText],
     );
+    const filteredPubsInBounds = useMemo(
+        () => mapBounds && mapZoom >= minimumPubMapZoom
+            ? pubsService.filterPubsInBounds(searchedPubs, mapBounds) : [],
+        [searchedPubs, mapBounds, mapZoom],
+    );
     const clusterIndex = useMemo(
-        () => pubsService.createMapClusterIndex(filteredPubsInBounds),
-        [filteredPubsInBounds],
+        () => pubsService.createMapClusterIndex(searchedPubs),
+        [searchedPubs],
     );
     const mapPoints = useMemo(
-        () => mapBounds ? pubsService.getMapPoints(clusterIndex, mapBounds, mapZoom) : [],
+        () => mapBounds && mapZoom >= minimumPubMapZoom
+            ? pubsService.getMapPoints(clusterIndex, mapBounds, mapZoom) : [],
         [clusterIndex, mapBounds, mapZoom],
     );
     const getClusterExpansionZoom = useCallback(
@@ -32,6 +45,8 @@ export function usePubs(mapBounds?: MapBounds, mapZoom = 15, searchText = '') {
         return () => {
             nearbyController.current?.abort();
             inBoundsController.current?.abort();
+            inBoundsController.current = null;
+            pendingBounds.current = null;
         };
     }, []);
 
@@ -64,27 +79,56 @@ export function usePubs(mapBounds?: MapBounds, mapZoom = 15, searchText = '') {
         }
     }
 
-    async function getPubsInBoundsAsync(bounds: MapBounds) {
-        inBoundsController.current?.abort();
-        const controller = new AbortController();
-        inBoundsController.current = controller;
+    useEffect(() => {
+        if (!mapViewport) return;
+        const {bounds, zoom} = mapViewport;
 
-        try {
-            const result = await pubsService.getPubsInBoundsAsync(bounds, controller.signal);
-
-            if (!controller.signal.aborted) {
-                setPubsInBounds(result)
-            }
-        } catch (error) {
-            if (!controller.signal.aborted) {
-                throw error;
-            }
-        } finally {
-            if (inBoundsController.current === controller) {
+        async function getPubsInBoundsAsync() {
+            if (zoom < minimumPubMapZoom) {
+                inBoundsController.current?.abort();
                 inBoundsController.current = null;
+                pendingBounds.current = null;
+                loadedBounds.current = null;
+                setPubsInBounds(current => current.length ? [] : current);
+                return;
+            }
+
+            if (pendingBounds.current && pubsService.containsMapBounds(pendingBounds.current, bounds)) return;
+
+            inBoundsController.current?.abort();
+            inBoundsController.current = null;
+            pendingBounds.current = null;
+
+            if (loadedBounds.current && pubsService.containsMapBounds(loadedBounds.current, bounds)) return;
+
+            const requestBounds = pubsService.bufferMapBounds(bounds);
+            const controller = new AbortController();
+            inBoundsController.current = controller;
+            pendingBounds.current = requestBounds;
+
+            try {
+                const result = await pubsService.getPubsInBoundsAsync(requestBounds, controller.signal);
+
+                if (!controller.signal.aborted) {
+                    loadedBounds.current = requestBounds;
+                    setPubsInBounds(result);
+                }
+            } catch (error) {
+                if (!controller.signal.aborted) {
+                    throw error;
+                }
+            } finally {
+                if (inBoundsController.current === controller) {
+                    inBoundsController.current = null;
+                    pendingBounds.current = null;
+                }
             }
         }
-    }
+
+        void getPubsInBoundsAsync().catch(() => {
+            // The service logs errors. Keep the existing results.
+        });
+    }, [mapViewport, setPubsInBounds]);
 
     return {
         pubs,
@@ -95,6 +139,5 @@ export function usePubs(mapBounds?: MapBounds, mapZoom = 15, searchText = '') {
         getClusterExpansionZoom,
         getPubsAsync,
         getPubsInRangeAsync,
-        getPubsInBoundsAsync
     };
 }

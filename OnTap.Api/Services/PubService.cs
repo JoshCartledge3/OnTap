@@ -48,6 +48,10 @@ public class PubService(OnTapDbContext dbContext, ILogger<PubService> logger) : 
                 existingPub.Name = pub.Name;
                 existingPub.Address = pub.Address;
                 existingPub.Postcode = pub.Postcode;
+                existingPub.Place = pub.Place;
+                existingPub.Village = pub.Village;
+                existingPub.Town = pub.Town;
+                existingPub.City = pub.City;
                 existingPub.Phone = pub.Phone;
                 existingPub.OpeningHours = pub.OpeningHours;
                 existingPub.DogsAllowed = pub.DogsAllowed;
@@ -57,7 +61,6 @@ public class PubService(OnTapDbContext dbContext, ILogger<PubService> logger) : 
                 existingPub.SportsBroadcasters = pub.SportsBroadcasters;
                 existingPub.PaymentMethodsAccepted = pub.PaymentMethodsAccepted;
                 existingPub.Location = pub.Location;
-                existingPub.VenueType = pub.VenueType;
                 updatedPubs.Add(existingPub);
             }
 
@@ -79,19 +82,21 @@ public class PubService(OnTapDbContext dbContext, ILogger<PubService> logger) : 
         }
     }
 
-    public async Task<IEnumerable<PubDto>> GetPubsAsync(CancellationToken ct = default)
+    public async Task<IEnumerable<PubSummaryDto>> GetPubsAsync(CancellationToken ct = default)
     {
         var pubs = await dbContext.Pubs
             .AsNoTracking()
             .OrderBy(pub => pub.Name)
             .ThenBy(pub => pub.Id)
+            .Select(PubMapper.SummaryFields)
             .ToListAsync(ct);
 
         // Map coordinates after loading: Location is stored as PostGIS geography.
-        return pubs.Select(PubMapper.ToDto).ToArray();
+        var now = DateTimeOffset.UtcNow;
+        return pubs.Select(pub => pub.ToDto(now)).ToArray();
     }
 
-    public async Task<IEnumerable<PubDto>> GetPubsInRangeAsync(GetPubsInRangeRequest request, CancellationToken ct = default)
+    public async Task<IEnumerable<PubSummaryDto>> GetPubsInRangeAsync(GetPubsInRangeRequest request, CancellationToken ct = default)
     {
         // Get user's location
         var location = new Point(request.Longitude!.Value, request.Latitude!.Value)
@@ -104,12 +109,14 @@ public class PubService(OnTapDbContext dbContext, ILogger<PubService> logger) : 
             .Where(pub => pub.Location.IsWithinDistance(location, request.RadiusMetres!.Value))
             .OrderBy(pub => pub.Location.Distance(location))
             .ThenBy(pub => pub.Id)
+            .Select(PubMapper.SummaryFields)
             .ToListAsync(ct);
 
-        return pubs.Select(PubMapper.ToDto).ToArray();
+        var now = DateTimeOffset.UtcNow;
+        return pubs.Select(pub => pub.ToDto(now)).ToArray();
     }
 
-    public async Task<IEnumerable<PubDto>> GetPubsInBoundsAsync(GetPubsInBoundsRequest request, CancellationToken ct = default)
+    public async Task<IEnumerable<PubSummaryDto>> GetPubsInBoundsAsync(GetPubsInBoundsRequest request, CancellationToken ct = default)
     {
         var west = request.West!.Value;
         var south = request.South!.Value;
@@ -131,8 +138,10 @@ public class PubService(OnTapDbContext dbContext, ILogger<PubService> logger) : 
             .Where(pub => pub.Location.Intersects(bounds))
             .OrderBy(pub => pub.Name)
             .ThenBy(pub => pub.Id)
+            .Select(PubMapper.SummaryFields)
             .ToListAsync(ct);
 
-        return pubs.Select(PubMapper.ToDto).ToArray();
+        var now = DateTimeOffset.UtcNow;
+        return pubs.Select(pub => pub.ToDto(now)).ToArray();
     }
 }

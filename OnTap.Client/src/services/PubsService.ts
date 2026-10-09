@@ -2,7 +2,7 @@ import {onTapClient} from "../api/onTapClient";
 import type {Coordinates} from "../types/Coordinates";
 import type {MapBounds} from "../types/MapBounds";
 import Supercluster from 'supercluster';
-import type { PubDto } from '../api/generated/client';
+import type { PubSummaryDto } from '../api/generated/client';
 import { toGeoJsonFeatureCollection } from '../mappers/toGetJsonFeatureCollection';
 import type { PubProperties } from '../mappers/toGetJsonFeatureCollection';
 
@@ -14,19 +14,43 @@ export const pubsService = {
     createMapClusterIndex,
     getMapPoints,
     getClusterExpansionZoom,
+    containsMapBounds,
+    bufferMapBounds,
+    filterPubsInBounds,
 };
 
 const client = onTapClient.pubsClient;
 
-function searchPubs(pubs: readonly PubDto[], searchText: string): readonly PubDto[] {
+function containsMapBounds(outer: MapBounds, inner: MapBounds): boolean {
+    return outer[0] <= inner[0] && outer[1] <= inner[1]
+        && outer[2] >= inner[2] && outer[3] >= inner[3];
+}
+
+function bufferMapBounds([west, south, east, north]: MapBounds): MapBounds {
+    const longitudeMargin = (east - west) * 0.25;
+    const latitudeMargin = (north - south) * 0.25;
+    return [
+        Math.max(-180, west - longitudeMargin),
+        Math.max(-90, south - latitudeMargin),
+        Math.min(180, east + longitudeMargin),
+        Math.min(90, north + latitudeMargin),
+    ];
+}
+
+function filterPubsInBounds(pubs: readonly PubSummaryDto[], [west, south, east, north]: MapBounds) {
+    return pubs.filter(pub => pub.longitude >= west && pub.longitude <= east
+        && pub.latitude >= south && pub.latitude <= north);
+}
+
+function searchPubs(pubs: readonly PubSummaryDto[], searchText: string): readonly PubSummaryDto[] {
     const query = searchText.trim().toLowerCase();
     if (!query) return pubs;
 
-    return pubs.filter(pub => [pub.name, pub.address, pub.postcode]
+    return pubs.filter(pub => [pub.name, pub.address]
         .some(value => value?.toLowerCase().includes(query)));
 }
 
-function createMapClusterIndex(pubs: readonly PubDto[]) {
+function createMapClusterIndex(pubs: readonly PubSummaryDto[]) {
     return new Supercluster<PubProperties>({ radius: 50, maxZoom: 16 })
         .load(toGeoJsonFeatureCollection(pubs).features);
 }

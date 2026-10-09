@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetTopologySuite.Geometries;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
@@ -12,9 +13,11 @@ using OnTap.Api.Data;
 namespace OnTap.Api.Migrations
 {
     [DbContext(typeof(OnTapDbContext))]
-    partial class OnTapDbContextModelSnapshot : ModelSnapshot
+    [Migration("20261009173307_RemoveBars")]
+    partial class RemoveBars
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,11 +34,9 @@ namespace OnTap.Api.Migrations
                         .HasColumnType("uuid");
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("character varying(500)");
-
-                    b.Property<string>("City")
-                        .HasColumnType("text");
 
                     b.Property<DateTimeOffset>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -72,9 +73,6 @@ namespace OnTap.Api.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("text");
 
-                    b.Property<string>("Place")
-                        .HasColumnType("text");
-
                     b.Property<string>("Postcode")
                         .HasMaxLength(20)
                         .HasColumnType("character varying(20)");
@@ -89,12 +87,6 @@ namespace OnTap.Api.Migrations
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("character varying(30)");
-
-                    b.Property<string>("Town")
-                        .HasColumnType("text");
-
-                    b.Property<string>("Village")
-                        .HasColumnType("text");
 
                     b.Property<string>("WheelchairAccess")
                         .HasMaxLength(10)
