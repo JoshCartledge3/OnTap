@@ -8565,7 +8565,7 @@
       "minzoom": 15,
       "maxzoom": 22,
       "layout": {
-        "visibility": "visible",
+        "visibility": "none",
         "icon-image": "nature:tree",
         "icon-size": [
           "interpolate",
@@ -11467,6 +11467,26 @@
               ]
             ]
           ]
+        ],
+        [
+          "in",
+          [
+            "get",
+            "type"
+          ],
+          [
+            "literal",
+            [
+              "bus_stop",
+              "bus_station",
+              "rail",
+              "rail_metro",
+              "rail_monorail",
+              "rail_funicular",
+              "rail_miniature",
+              "atm"
+            ]
+          ]
         ]
       ],
       "minzoom": 15,
@@ -13506,7 +13526,7 @@
           16,
           0.99
         ],
-        "visibility": "visible"
+        "visibility": "none"
       },
       "paint": {
         "icon-color": "rgba(104, 120, 108, 1)",
@@ -13584,6 +13604,26 @@
                 "peak",
                 "shop"
               ]
+            ]
+          ]
+        ],
+        [
+          "in",
+          [
+            "get",
+            "type"
+          ],
+          [
+            "literal",
+            [
+              "bus_stop",
+              "bus_station",
+              "rail",
+              "rail_metro",
+              "rail_monorail",
+              "rail_funicular",
+              "rail_miniature",
+              "atm"
             ]
           ]
         ]
@@ -15692,7 +15732,7 @@
             0.87
           ]
         ],
-        "visibility": "visible"
+        "visibility": "none"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -15889,6 +15929,26 @@
                 "peak",
                 "shop"
               ]
+            ]
+          ]
+        ],
+        [
+          "in",
+          [
+            "get",
+            "type"
+          ],
+          [
+            "literal",
+            [
+              "bus_stop",
+              "bus_station",
+              "rail",
+              "rail_metro",
+              "rail_monorail",
+              "rail_funicular",
+              "rail_miniature",
+              "atm"
             ]
           ]
         ]
@@ -16482,7 +16542,7 @@
             0.87
           ]
         ],
-        "visibility": "visible"
+        "visibility": "none"
       },
       "metadata": {
         "maptoolkit:legend": {
@@ -17851,14 +17911,6 @@
           ]
         ],
         [
-          ">",
-          [
-            "get",
-            "rank_new"
-          ],
-          10
-        ],
-        [
           "<=",
           [
             "get",
@@ -17880,6 +17932,26 @@
                 "peak",
                 "shop"
               ]
+            ]
+          ]
+        ],
+        [
+          "in",
+          [
+            "get",
+            "type"
+          ],
+          [
+            "literal",
+            [
+              "bus_stop",
+              "bus_station",
+              "rail",
+              "rail_metro",
+              "rail_monorail",
+              "rail_funicular",
+              "rail_miniature",
+              "atm"
             ]
           ]
         ]
