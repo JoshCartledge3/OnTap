@@ -1,6 +1,39 @@
 # OnTap
 Monorepo for the OnTap API/Client Applications.
 
+## Authentication
+
+The Profile tab opens Auth0 Universal Login and supports signing out. Browsing
+pubs remains public. Auth0 manages the client session and credentials; this step
+does not create local user records or protect the API yet.
+
+Copy `OnTap.Client/.env.example` to `OnTap.Client/.env` and set the Native
+application's Domain and Client ID. The local `.env` is ignored by Git. Never
+add a client secret to the app. The domain must also match the Auth0 plugin in
+`OnTap.Client/app.json`.
+
+In the OnTap Native application's Auth0 settings, add these values to both
+**Allowed Callback URLs** and **Allowed Logout URLs**:
+
+```text
+ontap://dev-6p61uii3flewdqu3.us.auth0.com/ios/com.c.jxsh.ontap-client/callback
+ontap://dev-6p61uii3flewdqu3.us.auth0.com/android/com.c.jxsh.ontapclient/callback
+http://localhost:8081
+```
+
+For browser development, also add `http://localhost:8081` to **Allowed Web
+Origins**. Enable Google and/or Apple under the application's Connections when
+those providers are configured in Auth0. The app uses the enabled Universal
+Login methods rather than handling passwords itself.
+
+Auth0 adds native code, so rebuild the development app after installing it;
+Expo Go and development builds created before Auth0 was added cannot run it.
+From `OnTap.Client`, build a development client with `npm run ios`,
+`npm run android`, or your existing EAS development-build workflow. Then use
+`npm start` and test **Profile → Sign in**, returning to the app, cancelling
+login, reopening the app, and **Sign out**. Check web separately with
+`npm run web`.
+
 ## Local database
 
 With Docker Desktop running, run these commands from the repository root:
