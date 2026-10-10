@@ -1,6 +1,7 @@
 import type {ReactNode} from "react";
 import {AuthenticationProvider, PubsProvider, ThemeProvider} from './index';
 import {authenticationSettings} from '../settings/authentication';
+import AuthenticationInitializer from './AuthenticationInitializer';
 
 type Props =  {
     children: ReactNode;
@@ -8,7 +9,8 @@ type Props =  {
 
 export default function Providers ({ children }: Props) {
     return (
-        <AuthenticationProvider domain={authenticationSettings.domain} clientId={authenticationSettings.clientId}>
+        <AuthenticationProvider useDPoP={false} domain={authenticationSettings.domain} clientId={authenticationSettings.clientId}>
+            <AuthenticationInitializer />
             <ThemeProvider>
                 <PubsProvider>
                     {children}

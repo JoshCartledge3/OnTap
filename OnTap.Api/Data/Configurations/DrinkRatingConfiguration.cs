@@ -23,5 +23,9 @@ public class DrinkRatingConfiguration
         builder.HasOne<PubDrinkEntity>()
             .WithMany()
             .HasForeignKey(rating => rating.PubDrinkId);
+
+        builder.HasOne<UserEntity>()
+            .WithMany()
+            .HasForeignKey(rating => rating.UserId);
     }
 }

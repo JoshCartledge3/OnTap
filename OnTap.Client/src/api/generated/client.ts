@@ -170,6 +170,60 @@ export class PubsClient {
     }
 }
 
+export class UsersClient {
+    private http: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> };
+    private baseUrl: string;
+    protected jsonParseReviver: ((key: string, value: any) => any) | undefined = undefined;
+
+    constructor(baseUrl?: string, http?: { fetch(url: RequestInfo, init?: RequestInit): Promise<Response> }) {
+        this.http = http ? http : window as any;
+        this.baseUrl = baseUrl ?? "";
+    }
+
+    /**
+     * @return OK
+     */
+    getOrCreateCurrentUser(signal?: AbortSignal): Promise<UserDto> {
+        let url_ = this.baseUrl + "/api/users/me";
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_: RequestInit = {
+            method: "POST",
+            signal,
+            headers: {
+                "Accept": "application/json"
+            }
+        };
+
+        return this.http.fetch(url_, options_).then((_response: Response) => {
+            return this.processGetOrCreateCurrentUser(_response);
+        });
+    }
+
+    protected processGetOrCreateCurrentUser(response: Response): Promise<UserDto> {
+        const status = response.status;
+        let _headers: any = {}; if (response.headers && response.headers.forEach) { response.headers.forEach((v: any, k: any) => _headers[k] = v); };
+        if (status === 200) {
+            return response.text().then((_responseText) => {
+            let result200: any = null;
+            result200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as UserDto;
+            return result200;
+            });
+        } else if (status === 401) {
+            return response.text().then((_responseText) => {
+            let result401: any = null;
+            result401 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver) as ProblemDetails;
+            return throwException("Unauthorized", status, _responseText, _headers, result401);
+            });
+        } else if (status !== 200 && status !== 204) {
+            return response.text().then((_responseText) => {
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+            });
+        }
+        return Promise.resolve<UserDto>(null as any);
+    }
+}
+
 export interface ProblemDetails {
     type?: string | null;
     title?: string | null;
@@ -187,6 +241,13 @@ export interface PubSummaryDto {
     latitude: any;
     longitude: any;
     isOpenNow: boolean | null;
+
+    [key: string]: any;
+}
+
+export interface UserDto {
+    id: string;
+    displayName: string | null;
 
     [key: string]: any;
 }

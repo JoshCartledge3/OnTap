@@ -23,5 +23,9 @@ public class PubRatingConfiguration
         builder.HasOne<PubEntity>()
             .WithMany()
             .HasForeignKey(rating => rating.PubId);
+
+        builder.HasOne<UserEntity>()
+            .WithMany()
+            .HasForeignKey(rating => rating.UserId);
     }
 }

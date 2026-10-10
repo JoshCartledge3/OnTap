@@ -1,11 +1,32 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import {useAuth0} from 'react-native-auth0';
 import {authenticationService} from '../services/AuthenticationService';
 
-export function useAuthentication() {
-    const {authorize, clearSession, user, isLoading} = useAuth0();
+export function useAuthentication(initialize = false) {
+    const {authorize, clearSession, getCredentials, user, isLoading} = useAuth0();
     const [isAuthenticating, setIsAuthenticating] = useState(false);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+    const authSubject = user?.sub;
+
+    useEffect(() => {
+        if (!initialize || isLoading) return;
+
+        authenticationService.configureApiAuthentication(authSubject ? getCredentials : null);
+        const controller = new AbortController();
+
+        if (authSubject) {
+            void authenticationService.getOrCreateCurrentUserAsync(controller.signal)
+                .catch(() => {
+                    // The service logs the failure.
+                });
+        }
+
+        return () => {
+            controller.abort();
+            authenticationService.configureApiAuthentication(null);
+        };
+    }, [initialize, isLoading, authSubject, getCredentials]);
 
     async function signInAsync() {
         setIsAuthenticating(true);

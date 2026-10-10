@@ -10,6 +10,7 @@ public class OnTapDbContext(DbContextOptions<OnTapDbContext> options) : DbContex
     public DbSet<PubDrinkEntity> PubDrinks => Set<PubDrinkEntity>();
     public DbSet<DrinkRatingEntity> DrinkRatings => Set<DrinkRatingEntity>();
     public DbSet<PubRatingEntity> PubRatings => Set<PubRatingEntity>();
+    public DbSet<UserEntity> Users => Set<UserEntity>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

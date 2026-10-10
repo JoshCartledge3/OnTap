@@ -4,8 +4,17 @@ Monorepo for the OnTap API/Client Applications.
 ## Authentication
 
 The Profile tab opens Auth0 Universal Login and supports signing out. Browsing
-pubs remains public. Auth0 manages the client session and credentials; this step
-does not create local user records or protect the API yet.
+pubs remains public. Auth0 manages the client session and credentials. After
+sign-in or session restoration, the app calls the authenticated `POST /api/users/me`
+endpoint to create or retrieve its local user record. The API validates the
+access token and stores an Auth0 subject, a local GUID, display name, and creation
+date. Missing display names are populated from Auth0's verified profile, preferring
+the first name, then full name, then nickname.
+
+Register an Auth0 API with identifier `https://api.ontap` and grant the Native
+application user-delegated access. The client requests this audience; the API's
+authority and audience are configured in `OnTap.Api/appsettings.json`. Apply
+database migrations before starting the app, using the commands below.
 
 Copy `OnTap.Client/.env.example` to `OnTap.Client/.env` and set the Native
 application's Domain and Client ID. The local `.env` is ignored by Git. Never
