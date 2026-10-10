@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using OnTap.Api.Data;
 using OnTap.Api.Middleware;
@@ -14,6 +15,11 @@ builder.Services.AddOpenApi(options =>
 });
 
 builder.Services.AddScoped<IPubService, PubService>();
+builder.Services.AddHttpClient<IUserService, UserService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["Auth0:Authority"]
+        ?? throw new InvalidOperationException("Missing configuration value for 'Auth0:Authority'."));
+});
 builder.Services.AddHttpClient<IOverpassService, OverpassService>(client =>
 {
     client.DefaultRequestHeaders.UserAgent.ParseAdd("OnTap/1.0");
@@ -36,6 +42,16 @@ builder.Services.AddCors(options =>
             .AllowAnyHeader()
             .AllowAnyMethod());
 });
+
+builder.Services
+    .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.Authority = builder.Configuration["Auth0:Authority"];
+        options.Audience = builder.Configuration["Auth0:Audience"];
+    });
+
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -66,6 +82,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseCors("LocalWeb");
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

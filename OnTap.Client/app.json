@@ -18,7 +18,8 @@
         "backgroundImage": "./assets/android-icon-background.png",
         "monochromeImage": "./assets/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.c.jxsh.ontapclient"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -94,6 +95,13 @@
           "backgroundColor": "#F6F3E9",
           "imageWidth": 300,
           "resizeMode": "contain"
+        }
+      ],
+      [
+        "react-native-auth0",
+        {
+          "domain": "dev-6p61uii3flewdqu3.us.auth0.com",
+          "customScheme": "ontap"
         }
       ]
     ]
